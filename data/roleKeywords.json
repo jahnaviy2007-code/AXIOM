@@ -1,0 +1,65 @@
+{
+  "frontend": {
+    "title": "Frontend Developer",
+    "keywords": ["html", "css", "javascript", "typescript", "react", "vue", "angular", "next.js", "tailwind", "webpack", "babel", "redux", "responsive", "accessibility", "dom", "rest api", "graphql", "git", "figma", "npm"],
+    "requiredSections": ["experience", "projects", "skills", "education"],
+    "actionVerbs": ["built", "developed", "designed", "implemented", "optimised", "created", "launched", "deployed", "refactored", "improved"],
+    "metrics": ["users", "performance", "load time", "conversion", "engagement", "%", "ms", "kb"]
+  },
+  "backend": {
+    "title": "Backend Developer",
+    "keywords": ["node.js", "python", "java", "go", "rust", "express", "fastapi", "django", "spring", "sql", "postgresql", "mongodb", "redis", "docker", "kubernetes", "aws", "rest api", "microservices", "authentication", "ci/cd"],
+    "requiredSections": ["experience", "projects", "skills", "education"],
+    "actionVerbs": ["architected", "built", "optimised", "deployed", "scaled", "implemented", "designed", "migrated", "reduced", "improved"],
+    "metrics": ["requests/sec", "latency", "uptime", "users", "%", "ms", "TB", "GB"]
+  },
+  "fullstack": {
+    "title": "Full Stack Developer",
+    "keywords": ["react", "node.js", "typescript", "python", "sql", "mongodb", "docker", "aws", "git", "rest api", "graphql", "tailwind", "next.js", "postgresql", "redis", "ci/cd", "testing", "agile", "webpack", "linux"],
+    "requiredSections": ["experience", "projects", "skills", "education"],
+    "actionVerbs": ["built", "developed", "implemented", "deployed", "designed", "launched", "integrated", "optimised", "migrated", "scaled"],
+    "metrics": ["users", "performance", "%", "revenue", "load time", "ms"]
+  },
+  "ml engineer": {
+    "title": "ML / AI Engineer",
+    "keywords": ["python", "tensorflow", "pytorch", "scikit-learn", "numpy", "pandas", "machine learning", "deep learning", "nlp", "computer vision", "neural networks", "data preprocessing", "model training", "gpu", "cuda", "hugging face", "transformers", "mlops", "docker", "aws"],
+    "requiredSections": ["experience", "projects", "skills", "education", "publications"],
+    "actionVerbs": ["trained", "designed", "built", "improved", "deployed", "implemented", "researched", "optimised", "evaluated", "published"],
+    "metrics": ["accuracy", "f1 score", "precision", "recall", "loss", "%", "ms", "parameters", "dataset size"]
+  },
+  "data scientist": {
+    "title": "Data Scientist",
+    "keywords": ["python", "r", "sql", "pandas", "numpy", "scikit-learn", "tensorflow", "tableau", "power bi", "statistics", "machine learning", "data visualization", "regression", "classification", "clustering", "hypothesis testing", "spark", "hadoop", "aws", "jupyter"],
+    "requiredSections": ["experience", "projects", "skills", "education"],
+    "actionVerbs": ["analysed", "built", "developed", "modelled", "predicted", "visualised", "identified", "increased", "reduced", "improved"],
+    "metrics": ["accuracy", "%", "revenue impact", "cost savings", "users", "dataset size", "p-value"]
+  },
+  "data analyst": {
+    "title": "Data Analyst",
+    "keywords": ["sql", "excel", "python", "tableau", "power bi", "r", "data visualization", "reporting", "dashboards", "statistics", "kpi", "etl", "google analytics", "business intelligence", "looker", "bigquery", "mysql", "postgresql", "pivot tables", "vlookup"],
+    "requiredSections": ["experience", "projects", "skills", "education"],
+    "actionVerbs": ["analysed", "built", "developed", "identified", "reported", "created", "automated", "reduced", "improved", "visualised"],
+    "metrics": ["%", "revenue", "cost", "efficiency", "time saved", "users", "rows"]
+  },
+  "devops": {
+    "title": "DevOps Engineer",
+    "keywords": ["docker", "kubernetes", "ci/cd", "jenkins", "github actions", "aws", "azure", "gcp", "terraform", "ansible", "linux", "bash", "python", "monitoring", "prometheus", "grafana", "nginx", "git", "microservices", "security"],
+    "requiredSections": ["experience", "projects", "skills", "education"],
+    "actionVerbs": ["automated", "deployed", "built", "reduced", "improved", "implemented", "migrated", "managed", "configured", "optimised"],
+    "metrics": ["uptime", "deployment time", "%", "cost savings", "incidents", "latency"]
+  },
+  "ux designer": {
+    "title": "UX Designer",
+    "keywords": ["figma", "sketch", "adobe xd", "prototyping", "wireframing", "user research", "usability testing", "design systems", "accessibility", "responsive design", "information architecture", "user flows", "personas", "a/b testing", "typography", "colour theory", "interaction design", "html", "css"],
+    "requiredSections": ["experience", "projects", "skills", "education", "portfolio"],
+    "actionVerbs": ["designed", "researched", "tested", "improved", "created", "developed", "led", "collaborated", "reduced", "increased"],
+    "metrics": ["conversion", "satisfaction score", "task completion", "nps", "%", "users"]
+  },
+  "software engineer": {
+    "title": "Software Engineer",
+    "keywords": ["java", "python", "c++", "javascript", "typescript", "algorithms", "data structures", "oop", "design patterns", "git", "agile", "testing", "sql", "rest api", "docker", "linux", "distributed systems", "system design", "code review", "debugging"],
+    "requiredSections": ["experience", "projects", "skills", "education"],
+    "actionVerbs": ["built", "developed", "implemented", "designed", "optimised", "refactored", "reduced", "improved", "deployed", "reviewed"],
+    "metrics": ["performance", "%", "users", "latency", "throughput", "code coverage"]
+  }
+}

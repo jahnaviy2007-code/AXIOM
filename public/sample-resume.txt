@@ -1,0 +1,30 @@
+ALEX CHEN
+San Francisco, CA • alex.chen@university.edu • (555) 234-5678 • github.com/alexchen-dev • linkedin.com/in/alexchen-tech
+
+EDUCATION
+University of California, Berkeley
+B.S. in Computer Science & Data Science | GPA: 3.82 | Expected May 2025
+Relevant Coursework: Data Structures & Algorithms, Distributed Systems, Database Management, Machine Learning
+
+TECHNICAL SKILLS
+Languages: TypeScript, JavaScript, Python, Go, SQL, HTML5/CSS3
+Frameworks: React, Next.js, Node.js, Express, FastAPI, Tailwind CSS, Redux Toolkit
+Databases & Cloud: PostgreSQL, MongoDB, Redis, Docker, AWS (S3, EC2), Git, Jest, CI/CD Actions
+
+PROJECTS
+Axiom DevFlow - Cloud Developer Analytics Platform | github.com/alexchen-dev/devflow-app
+• Architected full-stack developer telemetry platform using Next.js, TypeScript, and PostgreSQL.
+• Scaled data ingestion pipelines to process over 45,000 webhook events daily with sub-80ms response latency.
+• Engineered real-time WebSocket dashboard cutting developer onboarding turnaround by 35%.
+• Deployed to production on AWS using Docker containers and automated GitHub Actions CI/CD workflows.
+
+CampusPantry - Food Rescue & Inventory App | github.com/alexchen-dev/campus-pantry
+• Built cross-platform mobile-responsive web app connecting 1,200+ local students with surplus dining hall items.
+• Integrated Google Maps API and Redis caching, reducing search latency by 40% for active food listings.
+• Led a 4-person Agile sprint team across 6 bi-weekly releases, delivering 99.4% crash-free sessions.
+
+TECHNICAL WORK EXPERIENCE
+Software Engineer Intern | NovaScale Labs | June 2024 - August 2024
+• Implemented high-throughput RESTful microservices in Node.js and Redis, boosting API throughput by 28%.
+• Refactored legacy SQL queries and added composite indexes, reducing p99 database query time from 420ms to 65ms.
+• Collaborated with senior engineers in daily standups and authored comprehensive Jest unit test suites with 86% coverage.
