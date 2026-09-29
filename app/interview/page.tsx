@@ -91,25 +91,92 @@ export default function InterviewPage() {
     setQuestions(qList);
   }, [role, difficulty]);
 
-  // Request camera and mic stream for setup
+  // Request camera and mic stream with graceful fallbacks
   const initMedia = async () => {
     try {
-      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        const stream = await navigator.mediaDevices.getUserMedia({
-          video: true,
-          audio: true,
-        });
-        streamRef.current = stream;
-        setHasCamera(true);
-        setHasMic(true);
-        if (videoRef.current) {
-          videoRef.current.srcObject = stream;
+      if (typeof navigator !== "undefined" && navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        // Stop any old stream tracks first
+        if (streamRef.current) {
+          streamRef.current.getTracks().forEach((t) => t.stop());
+          streamRef.current = null;
+        }
+
+        let stream: MediaStream | null = null;
+        try {
+          // Attempt standard video + audio
+          stream = await navigator.mediaDevices.getUserMedia({
+            video: {
+              width: { ideal: 1280 },
+              height: { ideal: 720 },
+              facingMode: "user",
+            },
+            audio: true,
+          });
+        } catch (dualErr) {
+          console.warn("Dual video+audio request failed, attempting video-only fallback:", dualErr);
+          try {
+            stream = await navigator.mediaDevices.getUserMedia({
+              video: true,
+            });
+          } catch (vidErr) {
+            console.warn("Video-only request also failed:", vidErr);
+          }
+        }
+
+        if (stream) {
+          streamRef.current = stream;
+          setHasCamera(true);
+          setCameraEnabled(true);
+          setHasMic(stream.getAudioTracks().length > 0);
+
+          if (videoRef.current) {
+            videoRef.current.srcObject = stream;
+            videoRef.current.play().catch((e) => console.warn("Play error:", e));
+          }
+        } else {
+          setHasCamera(false);
         }
       }
     } catch (err) {
       console.warn("Camera or microphone permission was not granted or device not found:", err);
       setHasCamera(false);
-      setHasMic(false);
+    }
+  };
+
+  // Ensure video stream is attached whenever the active video element is mounted in DOM
+  useEffect(() => {
+    if (stage === "active") {
+      if (!streamRef.current) {
+        initMedia();
+      } else if (videoRef.current) {
+        if (videoRef.current.srcObject !== streamRef.current) {
+          videoRef.current.srcObject = streamRef.current;
+        }
+        videoRef.current.play().catch((e) => console.warn("Video play error:", e));
+      }
+    }
+  }, [stage, cameraEnabled, hasCamera]);
+
+  const toggleCamera = () => {
+    const nextState = !cameraEnabled;
+    setCameraEnabled(nextState);
+    if (streamRef.current) {
+      streamRef.current.getVideoTracks().forEach((track) => {
+        track.enabled = nextState;
+      });
+    }
+    if (nextState && !hasCamera) {
+      initMedia();
+    }
+  };
+
+  const toggleMic = () => {
+    const nextState = !micEnabled;
+    setMicEnabled(nextState);
+    if (streamRef.current) {
+      streamRef.current.getAudioTracks().forEach((track) => {
+        track.enabled = nextState;
+      });
     }
   };
 
@@ -542,15 +609,27 @@ export default function InterviewPage() {
                         autoPlay
                         playsInline
                         muted
+                        onLoadedMetadata={() => {
+                          if (videoRef.current) {
+                            videoRef.current.play().catch((e) => console.warn("Video metadata play:", e));
+                          }
+                        }}
                         className="w-full h-full object-cover transform -scale-x-100"
                       />
                     ) : (
-                      <div className="text-center p-6 space-y-2">
+                      <div className="text-center p-6 space-y-3">
                         <div className="w-14 h-14 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center mx-auto text-gray-400">
                           <VideoOff className="w-7 h-7" />
                         </div>
-                        <p className="text-xs text-gray-400">Camera preview inactive or permissions denied.</p>
-                        <span className="text-[10px] text-blue-400">(Voice and typing are fully operational)</span>
+                        <p className="text-xs text-gray-300 font-medium">Camera is inactive or permissions denied.</p>
+                        <button
+                          onClick={initMedia}
+                          className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold shadow-sm transition-colors inline-flex items-center gap-1.5"
+                        >
+                          <Video className="w-3.5 h-3.5" />
+                          <span>Enable / Reconnect Camera</span>
+                        </button>
+                        <span className="text-[10px] text-gray-400 block">(Voice and typing are fully operational)</span>
                       </div>
                     )}
 
@@ -578,23 +657,23 @@ export default function InterviewPage() {
                   <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#E5E7EB]">
                     <div className="flex items-center gap-2">
                       <button
-                        onClick={() => setCameraEnabled(!cameraEnabled)}
+                        onClick={toggleCamera}
                         className={`p-2 rounded-lg border text-xs flex items-center gap-1.5 transition-colors ${
-                          cameraEnabled ? "bg-[#F9FAFB] border-[#E5E7EB] text-[#4B5563] hover:bg-gray-100" : "bg-rose-50 text-rose-700 border-rose-200"
+                          cameraEnabled && hasCamera ? "bg-[#F9FAFB] border-[#E5E7EB] text-[#4B5563] hover:bg-gray-100" : "bg-rose-50 text-rose-700 border-rose-200"
                         }`}
                       >
-                        {cameraEnabled ? <Video className="w-3.5 h-3.5 text-blue-600" /> : <VideoOff className="w-3.5 h-3.5" />}
-                        <span className="text-[11px]">{cameraEnabled ? "Cam On" : "Cam Off"}</span>
+                        {cameraEnabled && hasCamera ? <Video className="w-3.5 h-3.5 text-blue-600" /> : <VideoOff className="w-3.5 h-3.5" />}
+                        <span className="text-[11px]">{cameraEnabled && hasCamera ? "Cam On" : "Cam Off"}</span>
                       </button>
 
                       <button
-                        onClick={() => setMicEnabled(!micEnabled)}
+                        onClick={toggleMic}
                         className={`p-2 rounded-lg border text-xs flex items-center gap-1.5 transition-colors ${
-                          micEnabled ? "bg-[#F9FAFB] border-[#E5E7EB] text-[#4B5563] hover:bg-gray-100" : "bg-rose-50 text-rose-700 border-rose-200"
+                          micEnabled && hasMic ? "bg-[#F9FAFB] border-[#E5E7EB] text-[#4B5563] hover:bg-gray-100" : "bg-rose-50 text-rose-700 border-rose-200"
                         }`}
                       >
-                        {micEnabled ? <Mic className="w-3.5 h-3.5 text-indigo-600" /> : <MicOff className="w-3.5 h-3.5" />}
-                        <span className="text-[11px]">{micEnabled ? "Mic Active" : "Muted"}</span>
+                        {micEnabled && hasMic ? <Mic className="w-3.5 h-3.5 text-indigo-600" /> : <MicOff className="w-3.5 h-3.5" />}
+                        <span className="text-[11px]">{micEnabled && hasMic ? "Mic Active" : "Muted"}</span>
                       </button>
                     </div>
 
