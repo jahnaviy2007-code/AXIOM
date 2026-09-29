@@ -601,7 +601,7 @@ export default function ResumePage() {
                 <div>
                   <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-semibold mb-2">
                     <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
-                    On-Device Bullet Enhancer
+                    Groq AI Accelerated • Executive XYZ Formula
                   </div>
                   <h3 className="font-serif text-xl font-bold text-[#111827]">
                     Optimized XYZ Bullet Rewrites

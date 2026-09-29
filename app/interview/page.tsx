@@ -81,6 +81,7 @@ export default function InterviewPage() {
     { question: InterviewQuestion; answer: string; critique: CritiqueResult }[]
   >([]);
   const [finalReport, setFinalReport] = useState<InterviewAttempt | null>(null);
+  const [isEvaluating, setIsEvaluating] = useState(false);
 
   // Recognition ref
   const recognitionRef = useRef<any>(null);
@@ -306,7 +307,8 @@ export default function InterviewPage() {
     }
   };
 
-  const handleNextQuestion = () => {
+  const handleNextQuestion = async () => {
+    if (isEvaluating) return;
     if (recognitionRef.current) {
       recognitionRef.current.stop();
     }
@@ -320,7 +322,45 @@ export default function InterviewPage() {
       userAnswer.trim() ||
       "I would profile the bottleneck using telemetry metrics, isolate the latency causes, and apply indexing or caching before verifying production stability.";
 
-    const critique = evaluateAnswer(currentQ, answerToEval, Math.max(25, secondsElapsed));
+    setIsEvaluating(true);
+    let critique = evaluateAnswer(currentQ, answerToEval, Math.max(25, secondsElapsed));
+
+    try {
+      const groqRes = await fetch("/api/ai/evaluate-answer", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          question: currentQ.question,
+          answer: answerToEval,
+          role,
+          category: currentQ.category,
+        }),
+      });
+      if (groqRes.ok) {
+        const data = await groqRes.json();
+        if (data.success && data.evaluation) {
+          critique = {
+            ...critique,
+            technicalScore: data.evaluation.technicalScore,
+            communicationScore: data.evaluation.communicationScore,
+            summary: data.evaluation.summary,
+            strengths:
+              Array.isArray(data.evaluation.strengths) && data.evaluation.strengths.length > 0
+                ? data.evaluation.strengths
+                : critique.strengths,
+            improvements:
+              Array.isArray(data.evaluation.improvements) && data.evaluation.improvements.length > 0
+                ? data.evaluation.improvements
+                : critique.improvements,
+          };
+        }
+      }
+    } catch (groqErr) {
+      console.warn("Groq AI evaluation fallback to rule engine:", groqErr);
+    } finally {
+      setIsEvaluating(false);
+    }
+
     const newRecords = [...answersRecord, { question: currentQ, answer: answerToEval, critique }];
     setAnswersRecord(newRecords);
 
@@ -384,7 +424,7 @@ export default function InterviewPage() {
         <div className="text-center max-w-3xl mx-auto mb-10">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold mb-4 font-mono">
             <Sparkles className="w-4 h-4 text-blue-600" />
-            Autonomous Humanoid AI Bots • 100% Client-Side Privacy
+            Powered by Groq LPUs • Autonomous Humanoid AI Bots • Real-Time Diagnostics
           </div>
           <h1 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-[#111827] mb-4">
             Cybernetic AI Humanoid Mock Interview Studio
@@ -727,12 +767,22 @@ export default function InterviewPage() {
 
                   <button
                     onClick={handleNextQuestion}
-                    className="px-6 py-2.5 rounded-xl bg-gray-900 hover:bg-black text-white font-bold text-xs transition-all shadow-[0_1px_3px_rgba(0,0,0,0.08)] flex items-center gap-1.5"
+                    disabled={isEvaluating}
+                    className="px-6 py-2.5 rounded-xl bg-gray-900 hover:bg-black text-white font-bold text-xs transition-all shadow-[0_1px_3px_rgba(0,0,0,0.08)] flex items-center gap-1.5 disabled:opacity-60"
                   >
-                    <span>
-                      {currentIndex + 1 === questions.length ? "Submit & View Report" : "Next Question"}
-                    </span>
-                    <ChevronRight className="w-4 h-4" />
+                    {isEvaluating ? (
+                      <>
+                        <Sparkles className="w-4 h-4 animate-spin text-blue-400" />
+                        <span>Evaluating with Groq AI...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>
+                          {currentIndex + 1 === questions.length ? "Submit & View Report" : "Next Question"}
+                        </span>
+                        <ChevronRight className="w-4 h-4" />
+                      </>
+                    )}
                   </button>
                 </div>
               </GlassCard>
