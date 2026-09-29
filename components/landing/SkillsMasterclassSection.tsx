@@ -125,48 +125,48 @@ export default function SkillsMasterclassSection() {
     const height = 612;
 
     // Background
-    doc.setFillColor(11, 15, 46); // Navy-950
+    doc.setFillColor(255, 255, 255); // White diploma background
     doc.rect(0, 0, width, height, "F");
 
     // Luxury Border
-    doc.setDrawColor(34, 211, 238); // Cyan
+    doc.setDrawColor(79, 70, 229); // Indigo
     doc.setLineWidth(4);
     doc.roundedRect(30, 30, width - 60, height - 60, 16, 16, "S");
 
-    doc.setDrawColor(124, 92, 255); // Violet
+    doc.setDrawColor(2, 132, 199); // Sky / Cyan
     doc.setLineWidth(1.5);
     doc.roundedRect(40, 40, width - 80, height - 80, 12, 12, "S");
 
     // Header Tag
-    doc.setTextColor(34, 211, 238);
+    doc.setTextColor(79, 70, 229);
     doc.setFont("helvetica", "bold");
     doc.setFontSize(14);
     doc.text("AXIOM CAREER INTELLIGENCE & ENGINEERING ACADEMY", width / 2, 95, { align: "center" });
 
     // Title
-    doc.setTextColor(255, 255, 255);
+    doc.setTextColor(17, 24, 39);
     doc.setFont("times", "bold");
     doc.setFontSize(32);
     doc.text("Certificate of Completion", width / 2, 150, { align: "center" });
 
     doc.setFont("helvetica", "normal");
     doc.setFontSize(12);
-    doc.setTextColor(148, 163, 184);
+    doc.setTextColor(107, 114, 128);
     doc.text("THIS IS PROUDLY PRESENTED TO", width / 2, 195, { align: "center" });
 
     // Recipient Name
-    doc.setTextColor(34, 211, 238);
+    doc.setTextColor(17, 24, 39);
     doc.setFont("times", "bold");
     doc.setFontSize(34);
     doc.text(studentName.toUpperCase(), width / 2, 255, { align: "center" });
 
     // Underline
-    doc.setDrawColor(34, 211, 238);
+    doc.setDrawColor(79, 70, 229);
     doc.setLineWidth(1);
     doc.line(width / 2 - 180, 268, width / 2 + 180, 268);
 
     // Body
-    doc.setTextColor(226, 232, 240);
+    doc.setTextColor(75, 85, 99);
     doc.setFont("helvetica", "normal");
     doc.setFontSize(12);
     doc.text(
@@ -187,39 +187,39 @@ export default function SkillsMasterclassSection() {
     const today = new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
 
     doc.setFontSize(10);
-    doc.setTextColor(148, 163, 184);
+    doc.setTextColor(107, 114, 128);
     doc.text(`Credential ID: ${certId}`, 70, 490);
     doc.text(`Issued On: ${today}`, 70, 510);
     doc.text("Verification: axiom-career.org/verify", 70, 530);
 
     // Signature Area
-    doc.setTextColor(255, 255, 255);
+    doc.setTextColor(17, 24, 39);
     doc.setFont("helvetica", "bold");
     doc.text("Axiom Engineering Board", 560, 490);
     doc.setFont("helvetica", "normal");
     doc.setFontSize(9);
-    doc.setTextColor(148, 163, 184);
+    doc.setTextColor(107, 114, 128);
     doc.text("Director of Career Engineering", 560, 510);
 
-    doc.setDrawColor(124, 92, 255);
+    doc.setDrawColor(79, 70, 229);
     doc.line(550, 475, 710, 475);
 
     doc.save(`AXIOM_Certificate_${studentName.replace(/\s+/g, "_")}.pdf`);
   };
 
   return (
-    <section className="py-24 relative overflow-hidden" id="masterclass">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section className="py-24 bg-[#F9FAFB] border-y border-[#E5E7EB] relative overflow-hidden" id="masterclass">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/30 text-violet-300 text-xs font-semibold mb-4">
-            <Video className="w-4 h-4 text-violet-400" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-semibold mb-4">
+            <Video className="w-4 h-4 text-indigo-600" />
             Interactive Skill Accelerator & Verified Certification
           </div>
-          <h2 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-white mb-4">
+          <h2 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-[#111827] mb-4">
             What Tech Recruiters & ATS Actually Want
           </h2>
-          <p className="text-slate-300 text-base sm:text-lg">
+          <p className="text-[#4B5563] text-base sm:text-lg">
             3 foundational video masterclasses with interactive tools you can put directly on your resume, plus an official completion certificate.
           </p>
         </div>
@@ -228,7 +228,7 @@ export default function SkillsMasterclassSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
           {/* Module Selector (Col 4) */}
           <div className="lg:col-span-4 space-y-3">
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-400 block mb-2">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#6B7280] block mb-2">
               Curriculum Lessons (3 Modules)
             </span>
 
@@ -244,34 +244,34 @@ export default function SkillsMasterclassSection() {
                   }}
                   className={`p-4 rounded-2xl cursor-pointer transition-all border ${
                     isSelected
-                      ? "bg-violet-600/20 border-violet-400 shadow-lg shadow-violet-500/10"
-                      : "bg-navy-900/60 border-slate-800 hover:border-slate-700"
+                      ? "bg-white border-indigo-600 shadow-[0_4px_12px_rgba(79,70,229,0.12)]"
+                      : "bg-white border-[#E5E7EB] hover:border-gray-300 shadow-[0_1px_3px_rgba(0,0,0,0.04)]"
                   }`}
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-bold text-white">{mod.title}</span>
+                    <span className="text-xs font-bold text-[#111827]">{mod.title}</span>
                     {isDone ? (
-                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-semibold flex items-center gap-1">
+                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 font-semibold flex items-center gap-1">
                         <CheckCircle2 className="w-3 h-3" /> Done
                       </span>
                     ) : (
-                      <span className="text-[10px] text-slate-400 flex items-center gap-1">
+                      <span className="text-[10px] text-[#6B7280] flex items-center gap-1">
                         <Clock className="w-3 h-3" /> {mod.duration}
                       </span>
                     )}
                   </div>
-                  <p className="text-[11px] text-slate-400 line-clamp-2">{mod.description}</p>
+                  <p className="text-[11px] text-[#6B7280] line-clamp-2">{mod.description}</p>
                 </div>
               );
             })}
 
             {/* Unlocking Banner */}
-            <div className="p-4 rounded-xl bg-gradient-to-br from-cyan-950/40 to-violet-950/40 border border-cyan-500/30 mt-4">
+            <div className="p-4 rounded-xl bg-indigo-50/70 border border-indigo-200 mt-4">
               <div className="flex items-center gap-2 mb-1">
-                <Award className="w-4 h-4 text-cyan-400" />
-                <span className="text-xs font-bold text-white">Earn Verified Certificate</span>
+                <Award className="w-4 h-4 text-indigo-600" />
+                <span className="text-xs font-bold text-[#111827]">Earn Verified Certificate</span>
               </div>
-              <p className="text-[11px] text-slate-300">
+              <p className="text-[11px] text-[#4B5563]">
                 Complete all 3 video lessons ({completedModules.length}/3 done) to generate your official AXIOM Certificate.
               </p>
             </div>
@@ -279,19 +279,19 @@ export default function SkillsMasterclassSection() {
 
           {/* Interactive Player & Resume Tools (Col 8) */}
           <div className="lg:col-span-8 space-y-6">
-            <GlassCard className="p-6 sm:p-8 border-slate-700/80">
+            <GlassCard className="p-6 sm:p-8 bg-white border-[#E5E7EB]">
               {/* Simulated Interactive Video Screen */}
-              <div className="relative w-full h-[280px] sm:h-[340px] bg-slate-950 rounded-2xl overflow-hidden border border-slate-800 flex flex-col justify-between p-6 mb-6 group">
+              <div className="relative w-full h-[280px] sm:h-[340px] bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 flex flex-col justify-between p-6 mb-6 group">
                 {/* Background visual art for video */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-navy-950 via-slate-900 to-violet-950/60 opacity-90" />
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-500/10 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-gray-950 via-gray-900 to-indigo-950/60 opacity-90" />
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-500/20 via-transparent to-transparent" />
 
                 {/* Video Top Bar */}
                 <div className="relative z-10 flex items-center justify-between">
-                  <span className="text-xs font-semibold px-3 py-1 rounded-full bg-navy-950/80 border border-slate-700 text-cyan-300">
+                  <span className="text-xs font-semibold px-3 py-1 rounded-full bg-gray-900/90 border border-gray-700 text-sky-400">
                     Masterclass • {activeModule.duration}
                   </span>
-                  <span className="text-xs text-slate-300 bg-navy-950/80 px-2.5 py-1 rounded-lg border border-slate-800">
+                  <span className="text-xs text-gray-200 bg-gray-900/90 px-2.5 py-1 rounded-lg border border-gray-700">
                     {activeModule.speaker}
                   </span>
                 </div>
@@ -300,27 +300,27 @@ export default function SkillsMasterclassSection() {
                 <div className="relative z-10 text-center my-auto">
                   <button
                     onClick={handleTogglePlay}
-                    className="w-16 h-16 rounded-full bg-cyan-400 hover:bg-cyan-300 text-navy-950 flex items-center justify-center mx-auto mb-3 shadow-xl shadow-cyan-400/30 hover:scale-105 transition-all"
+                    className="w-16 h-16 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white flex items-center justify-center mx-auto mb-3 shadow-xl shadow-indigo-600/30 hover:scale-105 transition-all"
                   >
                     {isPlaying ? <Pause className="w-7 h-7" /> : <Play className="w-7 h-7 ml-1" />}
                   </button>
                   <h3 className="font-serif text-xl sm:text-2xl font-bold text-white max-w-md mx-auto">
                     {activeModule.title}
                   </h3>
-                  <p className="text-xs text-slate-400 mt-1">
+                  <p className="text-xs text-gray-400 mt-1">
                     {isPlaying ? "Playing lesson video..." : "Click play to begin interactive module"}
                   </p>
                 </div>
 
                 {/* Bottom Video Progress Controls */}
                 <div className="relative z-10 space-y-2">
-                  <div className="w-full bg-slate-800/80 h-2 rounded-full overflow-hidden cursor-pointer">
+                  <div className="w-full bg-gray-800 h-2 rounded-full overflow-hidden cursor-pointer">
                     <div
-                      className="bg-gradient-to-r from-cyan-400 to-violet-500 h-full rounded-full transition-all duration-300"
+                      className="bg-indigo-500 h-full rounded-full transition-all duration-300"
                       style={{ width: isPlaying ? "85%" : `${videoProgress}%` }}
                     />
                   </div>
-                  <div className="flex justify-between text-[10px] text-slate-400 font-mono">
+                  <div className="flex justify-between text-[10px] text-gray-400 font-mono">
                     <span>{isPlaying ? "06:45" : "02:15"}</span>
                     <span>{activeModule.duration}</span>
                   </div>
@@ -329,13 +329,13 @@ export default function SkillsMasterclassSection() {
 
               {/* Key Takeaways */}
               <div className="space-y-3 mb-6">
-                <h4 className="text-xs font-semibold uppercase tracking-wider text-cyan-400 flex items-center gap-1.5">
+                <h4 className="text-xs font-semibold uppercase tracking-wider text-indigo-700 flex items-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5" /> Core Takeaways from this Lesson:
                 </h4>
                 <ul className="space-y-2">
                   {activeModule.keyTakeaways.map((takeaway, tIdx) => (
-                    <li key={tIdx} className="text-xs text-slate-300 flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-1.5 shrink-0" />
+                    <li key={tIdx} className="text-xs text-[#4B5563] flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-indigo-600 mt-1.5 shrink-0" />
                       <span>{takeaway}</span>
                     </li>
                   ))}
@@ -343,35 +343,35 @@ export default function SkillsMasterclassSection() {
               </div>
 
               {/* Interactive Useful Resume Asset Tool */}
-              <div className="p-4 rounded-xl bg-navy-950/80 border border-violet-500/30 space-y-3">
+              <div className="p-4 rounded-xl bg-[#F9FAFB] border border-[#E5E7EB] space-y-3">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h5 className="text-xs font-bold text-white flex items-center gap-1.5">
-                      <Zap className="w-3.5 h-3.5 text-violet-400" />
+                    <h5 className="text-xs font-bold text-[#111827] flex items-center gap-1.5">
+                      <Zap className="w-3.5 h-3.5 text-indigo-600" />
                       {activeModule.resumeWidgetTitle}
                     </h5>
-                    <p className="text-[11px] text-slate-400 mt-0.5">
+                    <p className="text-[11px] text-[#6B7280] mt-0.5">
                       {activeModule.resumeWidgetDescription}
                     </p>
                   </div>
 
                   <button
                     onClick={() => handleCopy(activeModule.sampleAsset, activeModule.id)}
-                    className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-600 flex items-center gap-1.5 transition-colors shrink-0"
+                    className="px-3 py-1.5 rounded-lg bg-white hover:bg-gray-50 text-[#111827] text-xs font-semibold border border-[#E5E7EB] shadow-sm flex items-center gap-1.5 transition-colors shrink-0"
                   >
                     {copiedAsset === activeModule.id ? (
                       <>
-                        <Check className="w-3.5 h-3.5 text-emerald-400" /> Copied!
+                        <Check className="w-3.5 h-3.5 text-emerald-600" /> Copied!
                       </>
                     ) : (
                       <>
-                        <Copy className="w-3.5 h-3.5 text-slate-400" /> Copy to Resume
+                        <Copy className="w-3.5 h-3.5 text-[#6B7280]" /> Copy to Resume
                       </>
                     )}
                   </button>
                 </div>
 
-                <div className="p-3 rounded-lg bg-slate-900 border border-slate-800 font-mono text-[11px] text-slate-200 whitespace-pre-wrap">
+                <div className="p-3 rounded-lg bg-white border border-[#E5E7EB] font-mono text-[11px] text-[#111827] whitespace-pre-wrap">
                   {activeModule.sampleAsset}
                 </div>
               </div>
@@ -380,17 +380,17 @@ export default function SkillsMasterclassSection() {
         </div>
 
         {/* Official Certificate Generator Box */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-navy-900 via-navy-950 to-violet-950/60 border border-cyan-500/40 relative overflow-hidden shadow-2xl">
+        <div className="p-8 sm:p-10 rounded-3xl bg-white border border-[#E5E7EB] relative overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.06)]">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="space-y-3 max-w-xl text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-semibold">
-                <ShieldCheck className="w-4 h-4 text-cyan-400" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-semibold">
+                <ShieldCheck className="w-4 h-4 text-indigo-600" />
                 Verified Student Credential
               </div>
-              <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white">
+              <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#111827]">
                 Claim Your AXIOM Career Readiness Certificate
               </h3>
-              <p className="text-slate-300 text-sm leading-relaxed">
+              <p className="text-[#4B5563] text-sm leading-relaxed">
                 Add this verified credential directly to your LinkedIn and resume to certify completion of modern ATS optimization, XYZ impact quantification, and technical proof engineering.
               </p>
 
@@ -400,11 +400,11 @@ export default function SkillsMasterclassSection() {
                   value={studentName}
                   onChange={(e) => setStudentName(e.target.value)}
                   placeholder="Enter your full name for certificate"
-                  className="bg-navy-950 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-cyan-400 w-full sm:w-64"
+                  className="bg-white border border-[#E5E7EB] rounded-xl px-4 py-2.5 text-xs text-[#111827] placeholder:text-gray-400 focus:outline-none focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600 w-full sm:w-64"
                 />
                 <button
                   onClick={handleDownloadCertificate}
-                  className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-400 to-violet-500 text-navy-950 font-bold text-xs hover:opacity-90 transition-all shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2 shrink-0"
+                  className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-gray-900 hover:bg-gray-800 text-white font-semibold text-xs transition-all shadow-sm flex items-center justify-center gap-2 shrink-0"
                 >
                   <Download className="w-4 h-4" />
                   <span>Download Official PDF Certificate</span>
@@ -413,22 +413,22 @@ export default function SkillsMasterclassSection() {
             </div>
 
             {/* Visual Certificate Card Preview */}
-            <div className="w-full max-w-md bg-navy-950 border-2 border-cyan-400/40 rounded-2xl p-6 text-center space-y-3 relative shadow-2xl">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-400 to-violet-500 flex items-center justify-center mx-auto text-navy-950">
+            <div className="w-full max-w-md bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl p-6 text-center space-y-3 relative shadow-sm">
+              <div className="w-12 h-12 rounded-full bg-indigo-600 flex items-center justify-center mx-auto text-white">
                 <Award className="w-6 h-6" />
               </div>
-              <span className="text-[10px] font-bold tracking-widest uppercase text-cyan-400 block">
+              <span className="text-[10px] font-bold tracking-widest uppercase text-indigo-600 block">
                 Certificate of Completion
               </span>
-              <h4 className="font-serif text-xl font-bold text-white tracking-wide">
+              <h4 className="font-serif text-xl font-bold text-[#111827] tracking-wide">
                 {studentName || "YOUR NAME"}
               </h4>
-              <p className="text-[11px] text-slate-400 italic">
+              <p className="text-[11px] text-[#4B5563] italic">
                 AXIOM Career Engineering & ATS Optimization Masterclass
               </p>
-              <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-[10px] text-slate-500">
+              <div className="pt-3 border-t border-[#E5E7EB] flex items-center justify-between text-[10px] text-[#6B7280]">
                 <span>Verified Credential</span>
-                <span className="font-mono text-cyan-400">AXIOM-2026-CERT</span>
+                <span className="font-mono text-indigo-600">AXIOM-2026-CERT</span>
               </div>
             </div>
           </div>

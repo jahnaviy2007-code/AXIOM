@@ -8,53 +8,58 @@ const problems = [
   {
     icon: DollarSign,
     title: 'Expensive',
-    description: 'Professional career coaching costs hundreds of dollars — far out of reach for most students.',
-    color: 'text-red-400',
-    border: 'border-red-400/20',
-    bg: 'bg-red-400/5',
+    description: 'Professional career coaching costs hundreds of dollars — far out of reach for most college students.',
+    color: 'text-rose-700',
+    border: 'border-rose-200',
+    bg: 'bg-rose-50/60',
+    iconBg: 'bg-rose-100/80 text-rose-600',
   },
   {
     icon: AlertTriangle,
     title: 'Generic',
-    description: 'Most resume tips ignore your target role, your skills, and what actually matters to recruiters.',
-    color: 'text-yellow-400',
-    border: 'border-yellow-400/20',
-    bg: 'bg-yellow-400/5',
+    description: 'Most resume tips ignore your target role, your skills, and what actually matters to modern recruiters.',
+    color: 'text-amber-800',
+    border: 'border-amber-200',
+    bg: 'bg-amber-50/60',
+    iconBg: 'bg-amber-100/80 text-amber-600',
   },
   {
     icon: Lock,
     title: 'Inaccessible',
-    description: 'Interview practice is hard to find, inconsistent, and rarely gives real-time, useful feedback.',
-    color: 'text-orange-400',
-    border: 'border-orange-400/20',
-    bg: 'bg-orange-400/5',
+    description: 'Interview practice is hard to find, inconsistent, and rarely gives real-time, actionable STAR feedback.',
+    color: 'text-orange-800',
+    border: 'border-orange-200',
+    bg: 'bg-orange-50/60',
+    iconBg: 'bg-orange-100/80 text-orange-600',
   },
 ];
 
 const gaps = [
-  'Measurable Results',
+  'Measurable Results (XYZ)',
   'Clear Career Focus',
-  'Project Proof',
-  'Tailored Alignment',
+  'Project Proof & Links',
+  'Tailored Role Alignment',
 ];
 
 export default function ProblemSection() {
   return (
-    <section className="section-padding" aria-labelledby="problem-heading">
-      <div className="max-w-7xl mx-auto">
+    <section className="section-padding bg-white" aria-labelledby="problem-heading">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-cyan-400 text-sm font-semibold tracking-widest uppercase">The Problem</span>
-          <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mt-3 mb-4">
+          <span className="text-blue-600 text-xs font-bold tracking-widest uppercase block mb-2">
+            The Industry Problem
+          </span>
+          <h2 id="problem-heading" className="font-sans text-3xl sm:text-5xl font-extrabold text-[#111827] tracking-tight mb-4">
             Career coaching is broken
           </h2>
-          <p className="text-white/60 text-lg max-w-2xl mx-auto">
-            Students deserve better than expensive, one-size-fits-all career advice.
+          <p className="text-[#4B5563] text-lg max-w-2xl mx-auto leading-relaxed">
+            Students deserve better than expensive, one-size-fits-all career advice that fails basic ATS parsers.
           </p>
         </motion.div>
 
@@ -63,14 +68,18 @@ export default function ProblemSection() {
           {problems.map((problem, i) => {
             const Icon = problem.icon;
             return (
-              <GlassCard key={problem.title} delay={i * 0.1} className={`${problem.border} ${problem.bg}`}>
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${problem.bg} border ${problem.border}`}>
-                  <Icon className={`w-6 h-6 ${problem.color}`} />
+              <GlassCard
+                key={problem.title}
+                delay={i * 0.1}
+                className={`${problem.border} ${problem.bg} shadow-sm`}
+              >
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-5 ${problem.iconBg} border ${problem.border}`}>
+                  <Icon className="w-6 h-6" />
                 </div>
-                <h3 className={`font-display text-xl font-bold mb-2 ${problem.color}`}>
+                <h3 className={`font-sans text-xl font-bold mb-2.5 ${problem.color}`}>
                   {problem.title}
                 </h3>
-                <p className="text-white/60 leading-relaxed">{problem.description}</p>
+                <p className="text-[#4B5563] leading-relaxed text-sm">{problem.description}</p>
               </GlassCard>
             );
           })}
@@ -78,23 +87,23 @@ export default function ProblemSection() {
 
         {/* What most resumes are lacking */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center"
         >
-          <p className="text-white/60 text-lg mb-6">What most student resumes are lacking:</p>
+          <p className="text-[#4B5563] font-medium text-base mb-5">What most student resumes are lacking:</p>
           <div className="flex flex-wrap gap-3 justify-center">
             {gaps.map((gap, i) => (
               <motion.div
                 key={gap}
-                initial={{ opacity: 0, scale: 0.8 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-full glass border border-violet-500/40 text-white font-medium"
+                transition={{ delay: i * 0.08 }}
+                className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#F9FAFB] border border-[#E5E7EB] text-[#111827] text-sm font-semibold shadow-sm"
               >
-                <span className="text-red-400 font-bold">✗</span>
+                <span className="text-rose-600 font-bold">✗</span>
                 {gap}
               </motion.div>
             ))}

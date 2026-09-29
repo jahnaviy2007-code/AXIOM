@@ -84,20 +84,20 @@ export default function CertificationsPage() {
   }, [selectedCategory, levelFilter, searchQuery]);
 
   return (
-    <div className="min-h-screen bg-navy-950 text-slate-100 relative overflow-hidden flex flex-col">
+    <div className="min-h-screen bg-white text-[#4B5563] relative overflow-hidden flex flex-col">
       <Starfield />
 
       <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-32 pb-24 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-semibold mb-4">
-            <GraduationCap className="w-4 h-4 text-cyan-400" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold mb-4">
+            <GraduationCap className="w-4 h-4 text-blue-600" />
             100% Free • Verified Course Catalog
           </div>
-          <h1 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-white mb-4">
+          <h1 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-[#111827] mb-4">
             Free Certifications & Curriculum
           </h1>
-          <p className="text-slate-300 text-base sm:text-lg">
+          <p className="text-[#4B5563] text-base sm:text-lg">
             Zero tuition barriers. High-signal credentials and courses from Harvard, Google, freeCodeCamp, and Microsoft to fill verified resume gaps.
           </p>
         </div>
@@ -106,9 +106,9 @@ export default function CertificationsPage() {
         {recommended.length > 0 && (
           <div className="mb-12">
             <div className="flex items-center gap-2 mb-4">
-              <Sparkles className="w-4 h-4 text-violet-400" />
-              <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-300">
-                Recommended for Your Goal: <span className="text-cyan-400">{selectedRole}</span>
+              <Sparkles className="w-4 h-4 text-indigo-600" />
+              <h2 className="text-sm font-semibold uppercase tracking-wider text-[#6B7280]">
+                Recommended for Your Goal: <span className="text-blue-700 font-bold">{selectedRole}</span>
               </h2>
             </div>
 
@@ -118,45 +118,45 @@ export default function CertificationsPage() {
                 return (
                   <GlassCard
                     key={c.id}
-                    className="p-6 border-violet-500/30 hover:border-violet-500/60 transition-all flex flex-col justify-between"
+                    className="p-6 bg-white border-[#E5E7EB] hover:border-blue-300 shadow-[0_1px_3px_rgba(0,0,0,0.06)] transition-all flex flex-col justify-between"
                   >
                     <div>
                       <div className="flex items-start justify-between gap-3 mb-3">
-                        <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-violet-500/10 text-violet-300 border border-violet-500/20">
+                        <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">
                           {c.provider}
                         </span>
                         <button
                           onClick={() => toggleSavedCertification(c.id)}
-                          className="text-slate-400 hover:text-white"
+                          className="text-[#6B7280] hover:text-[#111827]"
                         >
                           {isSaved ? (
-                            <BookmarkCheck className="w-4 h-4 text-cyan-400" />
+                            <BookmarkCheck className="w-4 h-4 text-blue-600" />
                           ) : (
                             <Bookmark className="w-4 h-4" />
                           )}
                         </button>
                       </div>
 
-                      <h3 className="font-semibold text-white text-base mb-2">{c.title}</h3>
-                      <div className="flex items-center gap-4 text-xs text-slate-400 mb-4">
+                      <h3 className="font-semibold text-[#111827] text-base mb-2">{c.title}</h3>
+                      <div className="flex items-center gap-4 text-xs text-[#6B7280] mb-4">
                         <span className="flex items-center gap-1">
-                          <Clock className="w-3.5 h-3.5 text-slate-500" /> {c.duration}
+                          <Clock className="w-3.5 h-3.5 text-[#9CA3AF]" /> {c.duration}
                         </span>
-                        <span className="capitalize px-2 py-0.5 rounded bg-slate-800 text-[10px]">
+                        <span className="capitalize px-2 py-0.5 rounded bg-gray-100 text-[#4B5563] text-[10px] font-medium">
                           {c.level}
                         </span>
                       </div>
                     </div>
 
-                    <div className="pt-4 border-t border-slate-800 flex items-center justify-between">
-                      <span className="text-[11px] text-emerald-400 font-semibold flex items-center gap-1">
-                        <CheckCircle className="w-3 h-3" /> Free Verified
+                    <div className="pt-4 border-t border-[#E5E7EB] flex items-center justify-between">
+                      <span className="text-[11px] text-emerald-700 font-semibold flex items-center gap-1">
+                        <CheckCircle className="w-3 h-3 text-emerald-600" /> Free Verified
                       </span>
                       <a
                         href={c.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-xs text-cyan-400 hover:text-cyan-300 font-semibold flex items-center gap-1"
+                        className="text-xs text-blue-600 hover:text-blue-800 font-semibold flex items-center gap-1"
                       >
                         Enroll Now <ExternalLink className="w-3.5 h-3.5" />
                       </a>
@@ -169,7 +169,7 @@ export default function CertificationsPage() {
         )}
 
         {/* Filter & Search Bar */}
-        <div className="bg-navy-900/60 border border-slate-700/60 p-4 rounded-2xl mb-8 flex flex-col md:flex-row gap-4 justify-between items-center backdrop-blur-md">
+        <div className="bg-[#F9FAFB] border border-[#E5E7EB] p-4 rounded-2xl mb-8 flex flex-col md:flex-row gap-4 justify-between items-center shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
           {/* Categories */}
           <div className="flex flex-wrap gap-2 w-full md:w-auto">
             {CATEGORIES.map((cat) => (
@@ -178,8 +178,8 @@ export default function CertificationsPage() {
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                   selectedCategory === cat.id
-                    ? "bg-cyan-500 text-navy-950 font-bold shadow-md shadow-cyan-500/20"
-                    : "bg-navy-950/80 text-slate-300 border border-slate-800 hover:border-slate-600"
+                    ? "bg-blue-600 text-white font-bold shadow-sm"
+                    : "bg-white text-[#4B5563] border border-[#E5E7EB] hover:bg-gray-100 hover:text-[#111827]"
                 }`}
               >
                 {cat.label}
@@ -190,20 +190,20 @@ export default function CertificationsPage() {
           {/* Search & Level */}
           <div className="flex items-center gap-3 w-full md:w-auto">
             <div className="relative flex-1 md:w-64">
-              <Search className="w-4 h-4 text-slate-500 absolute left-3 top-2.5" />
+              <Search className="w-4 h-4 text-[#9CA3AF] absolute left-3 top-2.5" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search skill, topic, or provider..."
-                className="w-full bg-navy-950/80 border border-slate-700 rounded-lg pl-9 pr-3 py-1.5 text-xs text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-cyan-400"
+                className="w-full bg-white border border-[#E5E7EB] rounded-lg pl-9 pr-3 py-1.5 text-xs text-[#111827] placeholder:text-[#9CA3AF] focus:outline-none focus:border-blue-500 transition-colors"
               />
             </div>
 
             <select
               value={levelFilter}
               onChange={(e) => setLevelFilter(e.target.value)}
-              className="bg-navy-950/80 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-300 focus:outline-none focus:border-cyan-400"
+              className="bg-white border border-[#E5E7EB] rounded-lg px-2.5 py-1.5 text-xs text-[#4B5563] focus:outline-none focus:border-blue-500"
             >
               <option value="all">All Levels</option>
               <option value="beginner">Beginner</option>
@@ -220,36 +220,36 @@ export default function CertificationsPage() {
             return (
               <GlassCard
                 key={c.id}
-                className="p-6 border-slate-700/60 hover:border-slate-500 transition-all flex flex-col justify-between"
+                className="p-6 bg-white border-[#E5E7EB] hover:border-gray-300 shadow-[0_1px_3px_rgba(0,0,0,0.06)] transition-all flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-start justify-between gap-3 mb-3">
-                    <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700">
+                    <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-gray-100 text-[#4B5563] border border-gray-200">
                       {c.provider}
                     </span>
                     <button
                       onClick={() => toggleSavedCertification(c.id)}
-                      className="text-slate-400 hover:text-white"
+                      className="text-[#6B7280] hover:text-[#111827]"
                     >
                       {isSaved ? (
-                        <BookmarkCheck className="w-4 h-4 text-cyan-400" />
+                        <BookmarkCheck className="w-4 h-4 text-blue-600" />
                       ) : (
                         <Bookmark className="w-4 h-4" />
                       )}
                     </button>
                   </div>
 
-                  <h3 className="font-semibold text-white text-base mb-2 leading-snug">{c.title}</h3>
+                  <h3 className="font-semibold text-[#111827] text-base mb-2 leading-snug">{c.title}</h3>
 
-                  <div className="flex items-center gap-3 text-xs text-slate-400 mb-4">
+                  <div className="flex items-center gap-3 text-xs text-[#6B7280] mb-4">
                     <span className="flex items-center gap-1">
-                      <Clock className="w-3.5 h-3.5 text-slate-500" /> {c.duration}
+                      <Clock className="w-3.5 h-3.5 text-[#9CA3AF]" /> {c.duration}
                     </span>
-                    <span className="capitalize px-2 py-0.5 rounded bg-slate-800/80 text-[10px]">
+                    <span className="capitalize px-2 py-0.5 rounded bg-gray-100 text-[#4B5563] text-[10px] font-medium">
                       {c.level}
                     </span>
                     {c.certificate && (
-                      <span className="text-[10px] text-cyan-400 px-1.5 py-0.5 rounded bg-cyan-500/10">
+                      <span className="text-[10px] text-blue-700 px-1.5 py-0.5 rounded bg-blue-50 font-medium">
                         Cert Included
                       </span>
                     )}
@@ -260,7 +260,7 @@ export default function CertificationsPage() {
                     {c.skills.map((s, idx) => (
                       <span
                         key={idx}
-                        className="text-[10px] px-2 py-0.5 rounded bg-navy-950/80 text-slate-400 border border-slate-800"
+                        className="text-[10px] px-2 py-0.5 rounded bg-[#F9FAFB] text-[#4B5563] border border-[#E5E7EB]"
                       >
                         {s}
                       </span>
@@ -268,13 +268,13 @@ export default function CertificationsPage() {
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-slate-800 flex items-center justify-between">
-                  <span className="text-[11px] text-emerald-400 font-medium">Free Access</span>
+                <div className="pt-4 border-t border-[#E5E7EB] flex items-center justify-between">
+                  <span className="text-[11px] text-emerald-700 font-semibold">Free Access</span>
                   <a
                     href={c.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs text-cyan-400 hover:text-cyan-300 font-semibold flex items-center gap-1"
+                    className="text-xs text-blue-600 hover:text-blue-800 font-semibold flex items-center gap-1"
                   >
                     View Curriculum <ExternalLink className="w-3.5 h-3.5" />
                   </a>

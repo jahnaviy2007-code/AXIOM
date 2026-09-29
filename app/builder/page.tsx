@@ -263,26 +263,26 @@ ${e.bullets.map((b) => `• ${b}`).join("\n")}`
   };
 
   return (
-    <div className="min-h-screen bg-navy-950 text-slate-100 relative overflow-hidden flex flex-col">
+    <div className="min-h-screen bg-white text-[#111827] relative overflow-hidden flex flex-col">
       <Starfield />
 
-      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-32 pb-24 relative z-10">
+      <main className="flex-1 max-w-[1200px] mx-auto w-full px-4 sm:px-6 lg:px-8 pt-28 pb-24 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-semibold mb-4">
-            <Wand2 className="w-4 h-4 text-cyan-400" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-sky-700 text-xs font-semibold mb-4">
+            <Wand2 className="w-4 h-4 text-sky-600" />
             AI Step-by-Step Resume Builder • From Scratch to Hired
           </div>
-          <h1 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-white mb-4">
+          <h1 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-[#111827] mb-4">
             Build Your High-Impact Resume
           </h1>
-          <p className="text-slate-300 text-base sm:text-lg">
+          <p className="text-[#4B5563] text-base sm:text-lg">
             No prior resume needed. Answer 5 quick sections with built-in AI bullet enhancement (Google XYZ formula), then export ATS-compliant PDF instantly.
           </p>
         </div>
 
         {/* Stepper Navigation */}
-        <div className="bg-navy-900/60 border border-slate-700/60 p-4 rounded-2xl mb-8 backdrop-blur-md">
+        <div className="bg-[#F9FAFB] border border-[#E5E7EB] p-4 rounded-2xl mb-8 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
           <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
             {STEPS.map((s) => {
               const Icon = s.icon;
@@ -294,15 +294,15 @@ ${e.bullets.map((b) => `• ${b}`).join("\n")}`
                   onClick={() => setCurrentStep(s.id)}
                   className={`flex flex-col sm:flex-row items-center justify-center gap-2 p-3 rounded-xl text-xs font-medium transition-all ${
                     isActive
-                      ? "bg-cyan-500 text-navy-950 font-bold shadow-lg shadow-cyan-500/20"
+                      ? "bg-indigo-600 text-white font-bold shadow-sm"
                       : isPast
-                      ? "bg-navy-950/80 text-cyan-300 border border-cyan-500/30"
-                      : "bg-navy-950/40 text-slate-400 hover:text-white"
+                      ? "bg-white text-indigo-700 border border-indigo-200 shadow-sm"
+                      : "bg-white text-[#6B7280] border border-[#E5E7EB] hover:text-[#111827] shadow-sm"
                   }`}
                 >
                   <Icon className="w-4 h-4 shrink-0" />
                   <span className="truncate">{s.label}</span>
-                  {isPast && <span className="text-[10px] text-emerald-400 hidden sm:inline">✓</span>}
+                  {isPast && <span className="text-[10px] text-emerald-600 font-bold hidden sm:inline">✓</span>}
                 </button>
               );
             })}
@@ -313,101 +313,101 @@ ${e.bullets.map((b) => `• ${b}`).join("\n")}`
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Main Input Form (Col 7) */}
           <div className="lg:col-span-7">
-            <GlassCard className="p-6 sm:p-8 border-slate-700/70">
+            <GlassCard className="p-6 sm:p-8 bg-white border-[#E5E7EB] shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
               {/* STEP 1: IDENTITY & ROLE */}
               {currentStep === 1 && (
                 <div className="space-y-5 animate-fadeIn">
-                  <div className="border-b border-slate-700/60 pb-3">
-                    <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                      <User className="w-5 h-5 text-cyan-400" /> Personal Identity & Target Specialization
+                  <div className="border-b border-[#E5E7EB] pb-3">
+                    <h3 className="text-lg font-bold text-[#111827] flex items-center gap-2">
+                      <User className="w-5 h-5 text-indigo-600" /> Personal Identity & Target Specialization
                     </h3>
-                    <p className="text-xs text-slate-400 mt-1">
+                    <p className="text-xs text-[#6B7280] mt-1">
                       Clear contact details ensure ATS bots never drop your submission.
                     </p>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="text-xs font-semibold text-slate-300 block mb-1.5">Full Name *</label>
+                      <label className="text-xs font-semibold text-[#111827] block mb-1.5">Full Name *</label>
                       <input
                         type="text"
                         value={formData.fullName}
                         onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                        className="w-full bg-navy-950/80 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-cyan-400"
+                        className="w-full bg-white border border-[#E5E7EB] rounded-lg p-2.5 text-xs text-[#111827] placeholder:text-gray-400 focus:outline-none focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600 shadow-sm"
                       />
                     </div>
 
                     <div>
-                      <label className="text-xs font-semibold text-slate-300 block mb-1.5">Target Job Title *</label>
+                      <label className="text-xs font-semibold text-[#111827] block mb-1.5">Target Job Title *</label>
                       <input
                         type="text"
                         value={formData.targetRole}
                         onChange={(e) => setFormData({ ...formData, targetRole: e.target.value })}
                         placeholder="e.g. Full-Stack Developer, Data Scientist"
-                        className="w-full bg-navy-950/80 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-cyan-400"
+                        className="w-full bg-white border border-[#E5E7EB] rounded-lg p-2.5 text-xs text-[#111827] placeholder:text-gray-400 focus:outline-none focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600 shadow-sm"
                       />
                     </div>
 
                     <div>
-                      <label className="text-xs font-semibold text-slate-300 block mb-1.5">Email Address *</label>
+                      <label className="text-xs font-semibold text-[#111827] block mb-1.5">Email Address *</label>
                       <input
                         type="email"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full bg-navy-950/80 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-cyan-400"
+                        className="w-full bg-white border border-[#E5E7EB] rounded-lg p-2.5 text-xs text-[#111827] placeholder:text-gray-400 focus:outline-none focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600 shadow-sm"
                       />
                     </div>
 
                     <div>
-                      <label className="text-xs font-semibold text-slate-300 block mb-1.5">Phone Number *</label>
+                      <label className="text-xs font-semibold text-[#111827] block mb-1.5">Phone Number *</label>
                       <input
                         type="text"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full bg-navy-950/80 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-cyan-400"
+                        className="w-full bg-white border border-[#E5E7EB] rounded-lg p-2.5 text-xs text-[#111827] placeholder:text-gray-400 focus:outline-none focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600 shadow-sm"
                       />
                     </div>
 
                     <div>
-                      <label className="text-xs font-semibold text-slate-300 block mb-1.5">Location (City, State)</label>
+                      <label className="text-xs font-semibold text-[#111827] block mb-1.5">Location (City, State)</label>
                       <input
                         type="text"
                         value={formData.location}
                         onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                        className="w-full bg-navy-950/80 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-cyan-400"
+                        className="w-full bg-white border border-[#E5E7EB] rounded-lg p-2.5 text-xs text-[#111827] placeholder:text-gray-400 focus:outline-none focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600 shadow-sm"
                       />
                     </div>
 
                     <div>
-                      <label className="text-xs font-semibold text-slate-300 block mb-1.5">GitHub Profile Link</label>
+                      <label className="text-xs font-semibold text-[#111827] block mb-1.5">GitHub Profile Link</label>
                       <input
                         type="text"
                         value={formData.github}
                         onChange={(e) => setFormData({ ...formData, github: e.target.value })}
                         placeholder="github.com/your-handle"
-                        className="w-full bg-navy-950/80 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-cyan-400"
+                        className="w-full bg-white border border-[#E5E7EB] rounded-lg p-2.5 text-xs text-[#111827] placeholder:text-gray-400 focus:outline-none focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600 shadow-sm"
                       />
                     </div>
 
                     <div>
-                      <label className="text-xs font-semibold text-slate-300 block mb-1.5">LinkedIn Profile Link</label>
+                      <label className="text-xs font-semibold text-[#111827] block mb-1.5">LinkedIn Profile Link</label>
                       <input
                         type="text"
                         value={formData.linkedin}
                         onChange={(e) => setFormData({ ...formData, linkedin: e.target.value })}
                         placeholder="linkedin.com/in/your-handle"
-                        className="w-full bg-navy-950/80 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-cyan-400"
+                        className="w-full bg-white border border-[#E5E7EB] rounded-lg p-2.5 text-xs text-[#111827] placeholder:text-gray-400 focus:outline-none focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600 shadow-sm"
                       />
                     </div>
 
                     <div>
-                      <label className="text-xs font-semibold text-slate-300 block mb-1.5">Portfolio / Website</label>
+                      <label className="text-xs font-semibold text-[#111827] block mb-1.5">Portfolio / Website</label>
                       <input
                         type="text"
                         value={formData.portfolio}
                         onChange={(e) => setFormData({ ...formData, portfolio: e.target.value })}
                         placeholder="yourname.dev"
-                        className="w-full bg-navy-950/80 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-cyan-400"
+                        className="w-full bg-white border border-[#E5E7EB] rounded-lg p-2.5 text-xs text-[#111827] placeholder:text-gray-400 focus:outline-none focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600 shadow-sm"
                       />
                     </div>
                   </div>
@@ -417,67 +417,67 @@ ${e.bullets.map((b) => `• ${b}`).join("\n")}`
               {/* STEP 2: EDUCATION */}
               {currentStep === 2 && (
                 <div className="space-y-5 animate-fadeIn">
-                  <div className="border-b border-slate-700/60 pb-3">
-                    <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                      <GraduationCap className="w-5 h-5 text-cyan-400" /> Academic Credentials & Coursework
+                  <div className="border-b border-[#E5E7EB] pb-3">
+                    <h3 className="text-lg font-bold text-[#111827] flex items-center gap-2">
+                      <GraduationCap className="w-5 h-5 text-indigo-600" /> Academic Credentials & Coursework
                     </h3>
-                    <p className="text-xs text-slate-400 mt-1">
+                    <p className="text-xs text-[#6B7280] mt-1">
                       Signal academic rigor and foundational knowledge to technical interviewers.
                     </p>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="sm:col-span-2">
-                      <label className="text-xs font-semibold text-slate-300 block mb-1.5">University / College *</label>
+                      <label className="text-xs font-semibold text-[#111827] block mb-1.5">University / College *</label>
                       <input
                         type="text"
                         value={formData.university}
                         onChange={(e) => setFormData({ ...formData, university: e.target.value })}
-                        className="w-full bg-navy-950/80 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-cyan-400"
+                        className="w-full bg-white border border-[#E5E7EB] rounded-lg p-2.5 text-xs text-[#111827] placeholder:text-gray-400 focus:outline-none focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600 shadow-sm"
                       />
                     </div>
 
                     <div>
-                      <label className="text-xs font-semibold text-slate-300 block mb-1.5">Degree & Major *</label>
+                      <label className="text-xs font-semibold text-[#111827] block mb-1.5">Degree & Major *</label>
                       <input
                         type="text"
                         value={formData.degree}
                         onChange={(e) => setFormData({ ...formData, degree: e.target.value })}
                         placeholder="e.g. B.S. in Computer Science"
-                        className="w-full bg-navy-950/80 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-cyan-400"
+                        className="w-full bg-white border border-[#E5E7EB] rounded-lg p-2.5 text-xs text-[#111827] placeholder:text-gray-400 focus:outline-none focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600 shadow-sm"
                       />
                     </div>
 
                     <div>
-                      <label className="text-xs font-semibold text-slate-300 block mb-1.5">Graduation Date</label>
+                      <label className="text-xs font-semibold text-[#111827] block mb-1.5">Graduation Date</label>
                       <input
                         type="text"
                         value={formData.gradDate}
                         onChange={(e) => setFormData({ ...formData, gradDate: e.target.value })}
                         placeholder="e.g. May 2025"
-                        className="w-full bg-navy-950/80 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-cyan-400"
+                        className="w-full bg-white border border-[#E5E7EB] rounded-lg p-2.5 text-xs text-[#111827] placeholder:text-gray-400 focus:outline-none focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600 shadow-sm"
                       />
                     </div>
 
                     <div>
-                      <label className="text-xs font-semibold text-slate-300 block mb-1.5">Cumulative GPA (optional)</label>
+                      <label className="text-xs font-semibold text-[#111827] block mb-1.5">Cumulative GPA (optional)</label>
                       <input
                         type="text"
                         value={formData.gpa}
                         onChange={(e) => setFormData({ ...formData, gpa: e.target.value })}
                         placeholder="e.g. 3.80"
-                        className="w-full bg-navy-950/80 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-cyan-400"
+                        className="w-full bg-white border border-[#E5E7EB] rounded-lg p-2.5 text-xs text-[#111827] placeholder:text-gray-400 focus:outline-none focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600 shadow-sm"
                       />
                     </div>
 
                     <div className="sm:col-span-2">
-                      <label className="text-xs font-semibold text-slate-300 block mb-1.5">Relevant Coursework</label>
+                      <label className="text-xs font-semibold text-[#111827] block mb-1.5">Relevant Coursework</label>
                       <input
                         type="text"
                         value={formData.courses}
                         onChange={(e) => setFormData({ ...formData, courses: e.target.value })}
                         placeholder="Data Structures, Algorithms, Distributed Systems, Operating Systems"
-                        className="w-full bg-navy-950/80 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-cyan-400"
+                        className="w-full bg-white border border-[#E5E7EB] rounded-lg p-2.5 text-xs text-[#111827] placeholder:text-gray-400 focus:outline-none focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600 shadow-sm"
                       />
                     </div>
                   </div>
@@ -487,12 +487,12 @@ ${e.bullets.map((b) => `• ${b}`).join("\n")}`
               {/* STEP 3: PROJECTS */}
               {currentStep === 3 && (
                 <div className="space-y-6 animate-fadeIn">
-                  <div className="border-b border-slate-700/60 pb-3 flex items-center justify-between">
+                  <div className="border-b border-[#E5E7EB] pb-3 flex items-center justify-between">
                     <div>
-                      <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                        <FolderGit2 className="w-5 h-5 text-cyan-400" /> Featured Projects & Code Proof
+                      <h3 className="text-lg font-bold text-[#111827] flex items-center gap-2">
+                        <FolderGit2 className="w-5 h-5 text-indigo-600" /> Featured Projects & Code Proof
                       </h3>
-                      <p className="text-xs text-slate-400 mt-1">
+                      <p className="text-xs text-[#6B7280] mt-1">
                         Recruiters rank projects with clickable GitHub or deployment links 3x higher.
                       </p>
                     </div>
@@ -506,16 +506,16 @@ ${e.bullets.map((b) => `• ${b}`).join("\n")}`
                           ],
                         })
                       }
-                      className="text-xs font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 bg-cyan-500/10 px-3 py-1.5 rounded-lg border border-cyan-500/20"
+                      className="text-xs font-semibold text-indigo-700 hover:text-indigo-800 flex items-center gap-1 bg-indigo-50 px-3 py-1.5 rounded-lg border border-indigo-200 transition-colors"
                     >
                       <Plus className="w-3.5 h-3.5" /> Add Project
                     </button>
                   </div>
 
                   {formData.projects.map((proj, pIdx) => (
-                    <div key={pIdx} className="p-4 rounded-xl bg-navy-950/80 border border-slate-800 space-y-3">
+                    <div key={pIdx} className="p-4 rounded-xl bg-[#F9FAFB] border border-[#E5E7EB] space-y-3">
                       <div className="flex items-center justify-between">
-                        <span className="text-xs font-bold text-cyan-400 uppercase tracking-wider">
+                        <span className="text-xs font-bold text-indigo-700 uppercase tracking-wider">
                           Project #{pIdx + 1}
                         </span>
                         {formData.projects.length > 1 && (
@@ -526,7 +526,7 @@ ${e.bullets.map((b) => `• ${b}`).join("\n")}`
                                 projects: formData.projects.filter((_, idx) => idx !== pIdx),
                               })
                             }
-                            className="text-rose-400 hover:text-rose-300 text-xs flex items-center gap-1"
+                            className="text-rose-600 hover:text-rose-700 text-xs flex items-center gap-1 font-medium"
                           >
                             <Trash2 className="w-3.5 h-3.5" /> Remove
                           </button>
@@ -535,7 +535,7 @@ ${e.bullets.map((b) => `• ${b}`).join("\n")}`
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div>
-                          <label className="text-[11px] text-slate-400 block mb-1">Project Name</label>
+                          <label className="text-[11px] text-[#4B5563] font-medium block mb-1">Project Name</label>
                           <input
                             type="text"
                             value={proj.title}
@@ -544,12 +544,12 @@ ${e.bullets.map((b) => `• ${b}`).join("\n")}`
                               updated[pIdx].title = e.target.value;
                               setFormData({ ...formData, projects: updated });
                             }}
-                            className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-xs text-white"
+                            className="w-full bg-white border border-[#E5E7EB] rounded-lg p-2 text-xs text-[#111827] focus:outline-none focus:border-indigo-600"
                           />
                         </div>
 
                         <div>
-                          <label className="text-[11px] text-slate-400 block mb-1">GitHub / Live URL</label>
+                          <label className="text-[11px] text-[#4B5563] font-medium block mb-1">GitHub / Live URL</label>
                           <input
                             type="text"
                             value={proj.link}
@@ -558,12 +558,12 @@ ${e.bullets.map((b) => `• ${b}`).join("\n")}`
                               updated[pIdx].link = e.target.value;
                               setFormData({ ...formData, projects: updated });
                             }}
-                            className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-xs text-white"
+                            className="w-full bg-white border border-[#E5E7EB] rounded-lg p-2 text-xs text-[#111827] focus:outline-none focus:border-indigo-600"
                           />
                         </div>
 
                         <div className="sm:col-span-2">
-                          <label className="text-[11px] text-slate-400 block mb-1">Tech Stack</label>
+                          <label className="text-[11px] text-[#4B5563] font-medium block mb-1">Tech Stack</label>
                           <input
                             type="text"
                             value={proj.tech}
@@ -572,12 +572,12 @@ ${e.bullets.map((b) => `• ${b}`).join("\n")}`
                               updated[pIdx].tech = e.target.value;
                               setFormData({ ...formData, projects: updated });
                             }}
-                            className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-xs text-white"
+                            className="w-full bg-white border border-[#E5E7EB] rounded-lg p-2 text-xs text-[#111827] focus:outline-none focus:border-indigo-600"
                           />
                         </div>
 
                         <div className="sm:col-span-2">
-                          <label className="text-[11px] text-slate-400 block mb-1">
+                          <label className="text-[11px] text-[#4B5563] font-medium block mb-1">
                             Bullet Points (XYZ Formula: Action + Task + Metric)
                           </label>
                           {proj.bullets.map((bullet, bIdx) => (
@@ -590,14 +590,14 @@ ${e.bullets.map((b) => `• ${b}`).join("\n")}`
                                   updated[pIdx].bullets[bIdx] = e.target.value;
                                   setFormData({ ...formData, projects: updated });
                                 }}
-                                className="flex-1 bg-slate-900 border border-slate-700 rounded-lg p-2 text-xs text-white"
+                                className="flex-1 bg-white border border-[#E5E7EB] rounded-lg p-2 text-xs text-[#111827] focus:outline-none focus:border-indigo-600"
                               />
                               <button
                                 onClick={() => handleGenerateBullet(bullet)}
                                 title="Enhance with Google XYZ formula"
-                                className="px-2.5 py-1 rounded bg-violet-600/30 hover:bg-violet-600/50 text-violet-300 text-xs border border-violet-500/40 flex items-center gap-1 shrink-0"
+                                className="px-2.5 py-1 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs border border-indigo-200 flex items-center gap-1 shrink-0 font-medium transition-colors"
                               >
-                                <Sparkles className="w-3 h-3" /> AI Polish
+                                <Sparkles className="w-3 h-3 text-indigo-600" /> AI Polish
                               </button>
                             </div>
                           ))}
@@ -608,17 +608,17 @@ ${e.bullets.map((b) => `• ${b}`).join("\n")}`
 
                   {/* AI Bullet Preview Box */}
                   {generatedAiBullet && (
-                    <div className="p-4 rounded-xl bg-violet-950/40 border border-violet-500/40 space-y-2">
-                      <span className="text-[11px] font-bold text-violet-300 flex items-center gap-1.5 uppercase tracking-wider">
-                        <Sparkles className="w-3.5 h-3.5" /> AI Recommended XYZ Bullet:
+                    <div className="p-4 rounded-xl bg-indigo-50/70 border border-indigo-200 space-y-2">
+                      <span className="text-[11px] font-bold text-indigo-800 flex items-center gap-1.5 uppercase tracking-wider">
+                        <Sparkles className="w-3.5 h-3.5 text-indigo-600" /> AI Recommended XYZ Bullet:
                       </span>
-                      <p className="text-xs text-white font-medium italic">"{generatedAiBullet}"</p>
+                      <p className="text-xs text-[#111827] font-medium italic">"{generatedAiBullet}"</p>
                       <button
                         onClick={() => {
                           navigator.clipboard.writeText(generatedAiBullet);
                           alert("Copied AI bullet! Paste it into your project bullets.");
                         }}
-                        className="text-xs text-cyan-400 hover:text-cyan-300 underline font-semibold"
+                        className="text-xs text-indigo-700 hover:text-indigo-900 underline font-semibold"
                       >
                         Copy this bullet
                       </button>
@@ -630,12 +630,12 @@ ${e.bullets.map((b) => `• ${b}`).join("\n")}`
               {/* STEP 4: EXPERIENCE */}
               {currentStep === 4 && (
                 <div className="space-y-6 animate-fadeIn">
-                  <div className="border-b border-slate-700/60 pb-3 flex items-center justify-between">
+                  <div className="border-b border-[#E5E7EB] pb-3 flex items-center justify-between">
                     <div>
-                      <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                        <Briefcase className="w-5 h-5 text-cyan-400" /> Work Experience, Internships & Leadership
+                      <h3 className="text-lg font-bold text-[#111827] flex items-center gap-2">
+                        <Briefcase className="w-5 h-5 text-indigo-600" /> Work Experience, Internships & Leadership
                       </h3>
-                      <p className="text-xs text-slate-400 mt-1">
+                      <p className="text-xs text-[#6B7280] mt-1">
                         Include internships, research, hackathon wins, or campus leadership roles.
                       </p>
                     </div>
@@ -655,16 +655,16 @@ ${e.bullets.map((b) => `• ${b}`).join("\n")}`
                           ],
                         })
                       }
-                      className="text-xs font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 bg-cyan-500/10 px-3 py-1.5 rounded-lg border border-cyan-500/20"
+                      className="text-xs font-semibold text-indigo-700 hover:text-indigo-800 flex items-center gap-1 bg-indigo-50 px-3 py-1.5 rounded-lg border border-indigo-200 transition-colors"
                     >
                       <Plus className="w-3.5 h-3.5" /> Add Experience
                     </button>
                   </div>
 
                   {formData.experiences.map((exp, eIdx) => (
-                    <div key={eIdx} className="p-4 rounded-xl bg-navy-950/80 border border-slate-800 space-y-3">
+                    <div key={eIdx} className="p-4 rounded-xl bg-[#F9FAFB] border border-[#E5E7EB] space-y-3">
                       <div className="flex items-center justify-between">
-                        <span className="text-xs font-bold text-violet-400 uppercase tracking-wider">
+                        <span className="text-xs font-bold text-indigo-700 uppercase tracking-wider">
                           Experience #{eIdx + 1}
                         </span>
                         <button
@@ -674,7 +674,7 @@ ${e.bullets.map((b) => `• ${b}`).join("\n")}`
                               experiences: formData.experiences.filter((_, idx) => idx !== eIdx),
                             })
                           }
-                          className="text-rose-400 hover:text-rose-300 text-xs flex items-center gap-1"
+                          className="text-rose-600 hover:text-rose-700 text-xs flex items-center gap-1 font-medium"
                         >
                           <Trash2 className="w-3.5 h-3.5" /> Remove
                         </button>
@@ -682,7 +682,7 @@ ${e.bullets.map((b) => `• ${b}`).join("\n")}`
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div>
-                          <label className="text-[11px] text-slate-400 block mb-1">Job Title</label>
+                          <label className="text-[11px] text-[#4B5563] font-medium block mb-1">Job Title</label>
                           <input
                             type="text"
                             value={exp.title}
@@ -691,12 +691,12 @@ ${e.bullets.map((b) => `• ${b}`).join("\n")}`
                               updated[eIdx].title = e.target.value;
                               setFormData({ ...formData, experiences: updated });
                             }}
-                            className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-xs text-white"
+                            className="w-full bg-white border border-[#E5E7EB] rounded-lg p-2 text-xs text-[#111827] focus:outline-none focus:border-indigo-600"
                           />
                         </div>
 
                         <div>
-                          <label className="text-[11px] text-slate-400 block mb-1">Company / Organization</label>
+                          <label className="text-[11px] text-[#4B5563] font-medium block mb-1">Company / Organization</label>
                           <input
                             type="text"
                             value={exp.company}
@@ -705,12 +705,12 @@ ${e.bullets.map((b) => `• ${b}`).join("\n")}`
                               updated[eIdx].company = e.target.value;
                               setFormData({ ...formData, experiences: updated });
                             }}
-                            className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-xs text-white"
+                            className="w-full bg-white border border-[#E5E7EB] rounded-lg p-2 text-xs text-[#111827] focus:outline-none focus:border-indigo-600"
                           />
                         </div>
 
                         <div>
-                          <label className="text-[11px] text-slate-400 block mb-1">Duration (e.g. June 2024 - Aug 2024)</label>
+                          <label className="text-[11px] text-[#4B5563] font-medium block mb-1">Duration (e.g. June 2024 - Aug 2024)</label>
                           <input
                             type="text"
                             value={exp.duration}
@@ -719,12 +719,12 @@ ${e.bullets.map((b) => `• ${b}`).join("\n")}`
                               updated[eIdx].duration = e.target.value;
                               setFormData({ ...formData, experiences: updated });
                             }}
-                            className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-xs text-white"
+                            className="w-full bg-white border border-[#E5E7EB] rounded-lg p-2 text-xs text-[#111827] focus:outline-none focus:border-indigo-600"
                           />
                         </div>
 
                         <div>
-                          <label className="text-[11px] text-slate-400 block mb-1">Location</label>
+                          <label className="text-[11px] text-[#4B5563] font-medium block mb-1">Location</label>
                           <input
                             type="text"
                             value={exp.location}
@@ -733,12 +733,12 @@ ${e.bullets.map((b) => `• ${b}`).join("\n")}`
                               updated[eIdx].location = e.target.value;
                               setFormData({ ...formData, experiences: updated });
                             }}
-                            className="w-full bg-slate-900 border border-slate-700 rounded-lg p-2 text-xs text-white"
+                            className="w-full bg-white border border-[#E5E7EB] rounded-lg p-2 text-xs text-[#111827] focus:outline-none focus:border-indigo-600"
                           />
                         </div>
 
                         <div className="sm:col-span-2">
-                          <label className="text-[11px] text-slate-400 block mb-1">
+                          <label className="text-[11px] text-[#4B5563] font-medium block mb-1">
                             Accomplishments (Use Action Verbs + Metrics)
                           </label>
                           {exp.bullets.map((b, bIdx) => (
@@ -751,7 +751,7 @@ ${e.bullets.map((b) => `• ${b}`).join("\n")}`
                                   updated[eIdx].bullets[bIdx] = e.target.value;
                                   setFormData({ ...formData, experiences: updated });
                                 }}
-                                className="flex-1 bg-slate-900 border border-slate-700 rounded-lg p-2 text-xs text-white"
+                                className="flex-1 bg-white border border-[#E5E7EB] rounded-lg p-2 text-xs text-[#111827] focus:outline-none focus:border-indigo-600"
                               />
                             </div>
                           ))}
@@ -765,61 +765,61 @@ ${e.bullets.map((b) => `• ${b}`).join("\n")}`
               {/* STEP 5: SKILLS */}
               {currentStep === 5 && (
                 <div className="space-y-5 animate-fadeIn">
-                  <div className="border-b border-slate-700/60 pb-3">
-                    <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                      <Code2 className="w-5 h-5 text-cyan-400" /> Technical Skills & Tools Matrix
+                  <div className="border-b border-[#E5E7EB] pb-3">
+                    <h3 className="text-lg font-bold text-[#111827] flex items-center gap-2">
+                      <Code2 className="w-5 h-5 text-indigo-600" /> Technical Skills & Tools Matrix
                     </h3>
-                    <p className="text-xs text-slate-400 mt-1">
+                    <p className="text-xs text-[#6B7280] mt-1">
                       Target keywords that ATS parsers index for {formData.targetRole}.
                     </p>
                   </div>
 
                   <div className="space-y-4">
                     <div>
-                      <label className="text-xs font-semibold text-slate-300 block mb-1.5">
+                      <label className="text-xs font-semibold text-[#111827] block mb-1.5">
                         Programming Languages
                       </label>
                       <input
                         type="text"
                         value={formData.languages}
                         onChange={(e) => setFormData({ ...formData, languages: e.target.value })}
-                        className="w-full bg-navy-950/80 border border-slate-700 rounded-lg p-2.5 text-xs text-white"
+                        className="w-full bg-white border border-[#E5E7EB] rounded-lg p-2.5 text-xs text-[#111827] focus:outline-none focus:border-indigo-600"
                       />
                     </div>
 
                     <div>
-                      <label className="text-xs font-semibold text-slate-300 block mb-1.5">
+                      <label className="text-xs font-semibold text-[#111827] block mb-1.5">
                         Frameworks & Libraries
                       </label>
                       <input
                         type="text"
                         value={formData.frameworks}
                         onChange={(e) => setFormData({ ...formData, frameworks: e.target.value })}
-                        className="w-full bg-navy-950/80 border border-slate-700 rounded-lg p-2.5 text-xs text-white"
+                        className="w-full bg-white border border-[#E5E7EB] rounded-lg p-2.5 text-xs text-[#111827] focus:outline-none focus:border-indigo-600"
                       />
                     </div>
 
                     <div>
-                      <label className="text-xs font-semibold text-slate-300 block mb-1.5">
+                      <label className="text-xs font-semibold text-[#111827] block mb-1.5">
                         Databases, Cloud & Developer Tools
                       </label>
                       <input
                         type="text"
                         value={formData.tools}
                         onChange={(e) => setFormData({ ...formData, tools: e.target.value })}
-                        className="w-full bg-navy-950/80 border border-slate-700 rounded-lg p-2.5 text-xs text-white"
+                        className="w-full bg-white border border-[#E5E7EB] rounded-lg p-2.5 text-xs text-[#111827] focus:outline-none focus:border-indigo-600"
                       />
                     </div>
 
                     <div>
-                      <label className="text-xs font-semibold text-slate-300 block mb-1.5">
+                      <label className="text-xs font-semibold text-[#111827] block mb-1.5">
                         Software Engineering Concepts
                       </label>
                       <input
                         type="text"
                         value={formData.concepts}
                         onChange={(e) => setFormData({ ...formData, concepts: e.target.value })}
-                        className="w-full bg-navy-950/80 border border-slate-700 rounded-lg p-2.5 text-xs text-white"
+                        className="w-full bg-white border border-[#E5E7EB] rounded-lg p-2.5 text-xs text-[#111827] focus:outline-none focus:border-indigo-600"
                       />
                     </div>
                   </div>
@@ -829,11 +829,11 @@ ${e.bullets.map((b) => `• ${b}`).join("\n")}`
               {/* STEP 6: REVIEW & ACTIONS */}
               {currentStep === 6 && (
                 <div className="space-y-6 animate-fadeIn">
-                  <div className="border-b border-slate-700/60 pb-3">
-                    <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                      <FileCheck className="w-5 h-5 text-emerald-400" /> Ready to Finalize & Audit
+                  <div className="border-b border-[#E5E7EB] pb-3">
+                    <h3 className="text-lg font-bold text-[#111827] flex items-center gap-2">
+                      <FileCheck className="w-5 h-5 text-emerald-600" /> Ready to Finalize & Audit
                     </h3>
-                    <p className="text-xs text-slate-400 mt-1">
+                    <p className="text-xs text-[#6B7280] mt-1">
                       Your resume has been structured into an ATS-tested hierarchy.
                     </p>
                   </div>
@@ -841,48 +841,48 @@ ${e.bullets.map((b) => `• ${b}`).join("\n")}`
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <button
                       onClick={handleAuditInAxiom}
-                      className="p-5 rounded-2xl bg-gradient-to-r from-cyan-400 to-violet-500 text-navy-950 font-bold text-sm hover:opacity-95 transition-all shadow-xl shadow-cyan-500/20 flex flex-col items-center justify-center gap-2 text-center"
+                      className="p-5 rounded-2xl bg-gray-900 hover:bg-gray-800 text-white font-bold text-sm transition-all shadow-md flex flex-col items-center justify-center gap-2 text-center"
                     >
-                      <Zap className="w-6 h-6" />
+                      <Zap className="w-6 h-6 text-sky-400" />
                       <span>Audit with AXIOM Diagnostic Scorer</span>
-                      <span className="text-[11px] font-normal opacity-90">
+                      <span className="text-[11px] font-normal text-gray-300">
                         Get 100-point readiness gauge & ATS validation
                       </span>
                     </button>
 
                     <button
                       onClick={handlePrintPdf}
-                      className="p-5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm border border-slate-600 transition-all flex flex-col items-center justify-center gap-2 text-center"
+                      className="p-5 rounded-2xl bg-white hover:bg-gray-50 text-[#111827] font-bold text-sm border border-[#E5E7EB] shadow-sm transition-all flex flex-col items-center justify-center gap-2 text-center"
                     >
-                      <Download className="w-6 h-6 text-cyan-400" />
+                      <Download className="w-6 h-6 text-indigo-600" />
                       <span>Export & Print Clean PDF</span>
-                      <span className="text-[11px] font-normal text-slate-400">
+                      <span className="text-[11px] font-normal text-[#6B7280]">
                         Zero margins, clean single-column ATS typography
                       </span>
                     </button>
                   </div>
 
-                  <div className="p-4 rounded-xl bg-navy-950/80 border border-slate-800 flex items-center justify-between">
-                    <span className="text-xs text-slate-300">Copy formatted raw text to clipboard:</span>
+                  <div className="p-4 rounded-xl bg-[#F9FAFB] border border-[#E5E7EB] flex items-center justify-between">
+                    <span className="text-xs text-[#4B5563]">Copy formatted raw text to clipboard:</span>
                     <button
                       onClick={handleCopyText}
-                      className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-600 flex items-center gap-1.5"
+                      className="px-3.5 py-1.5 rounded-lg bg-white hover:bg-gray-50 text-[#111827] text-xs font-semibold border border-[#E5E7EB] shadow-sm flex items-center gap-1.5 transition-colors"
                     >
-                      {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                      {copied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5 text-[#6B7280]" />}
                       <span>{copied ? "Copied!" : "Copy Text"}</span>
                     </button>
                   </div>
 
                   {/* SQLite DB Persistence Action */}
-                  <div className="p-4 rounded-xl bg-slate-900/80 border border-cyan-500/30 flex items-center justify-between">
+                  <div className="p-4 rounded-xl bg-[#F9FAFB] border border-[#E5E7EB] flex items-center justify-between">
                     <div className="space-y-0.5">
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold text-white">SQLite Database Storage</span>
-                        <span className="text-[10px] px-1.5 py-0.5 rounded font-mono bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+                        <span className="text-xs font-bold text-[#111827]">SQLite Database Storage</span>
+                        <span className="text-[10px] px-1.5 py-0.5 rounded font-mono bg-sky-50 text-sky-700 border border-sky-200">
                           axiom.db
                         </span>
                       </div>
-                      <p className="text-[11px] text-slate-400">
+                      <p className="text-[11px] text-[#6B7280]">
                         Persist full resume schema and ATS score directly to local backend database.
                       </p>
                     </div>
@@ -890,12 +890,12 @@ ${e.bullets.map((b) => `• ${b}`).join("\n")}`
                     <button
                       onClick={saveToSQLite}
                       disabled={dbSaving}
-                      className="px-4 py-2 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/40 text-xs font-bold font-mono transition-colors flex items-center gap-1.5 disabled:opacity-50"
+                      className="px-4 py-2 rounded-xl bg-white hover:bg-gray-50 text-sky-700 border border-[#E5E7EB] shadow-sm text-xs font-bold font-mono transition-colors flex items-center gap-1.5 disabled:opacity-50"
                     >
                       {dbSaving ? (
                         <span>Writing to SQLite...</span>
                       ) : dbSaveSuccess ? (
-                        <span className="text-emerald-400 flex items-center gap-1">
+                        <span className="text-emerald-600 flex items-center gap-1">
                           <Check className="w-3.5 h-3.5" /> Saved to DB!
                         </span>
                       ) : (
@@ -907,22 +907,22 @@ ${e.bullets.map((b) => `• ${b}`).join("\n")}`
               )}
 
               {/* Navigation Controls */}
-              <div className="flex items-center justify-between pt-6 mt-6 border-t border-slate-700/60">
+              <div className="flex items-center justify-between pt-6 mt-6 border-t border-[#E5E7EB]">
                 <button
                   disabled={currentStep === 1}
                   onClick={() => setCurrentStep((prev) => Math.max(1, prev - 1))}
-                  className="px-4 py-2 rounded-xl bg-slate-800 disabled:opacity-30 text-xs text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors"
+                  className="px-4 py-2 rounded-xl bg-white border border-[#E5E7EB] shadow-sm disabled:opacity-30 text-xs text-[#4B5563] hover:text-[#111827] flex items-center gap-1.5 transition-colors"
                 >
                   <ArrowLeft className="w-3.5 h-3.5" /> Back
                 </button>
 
-                <div className="text-xs text-slate-400">
+                <div className="text-xs text-[#6B7280]">
                   Step {currentStep} of {STEPS.length}
                 </div>
 
                 <button
                   onClick={() => setCurrentStep((prev) => Math.min(STEPS.length, prev + 1))}
-                  className="px-5 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-navy-950 font-bold text-xs flex items-center gap-1.5 shadow-md shadow-cyan-500/20 transition-all"
+                  className="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center gap-1.5 shadow-md shadow-indigo-600/20 transition-all"
                 >
                   <span>{currentStep === STEPS.length ? "Preview Summary" : "Continue"}</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -935,10 +935,10 @@ ${e.bullets.map((b) => `• ${b}`).join("\n")}`
           <div className="lg:col-span-5">
             <div className="sticky top-28 space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                  <Eye className="w-3.5 h-3.5 text-cyan-400" /> Live Resume Preview
+                <span className="text-xs font-semibold uppercase tracking-wider text-[#6B7280] flex items-center gap-1.5">
+                  <Eye className="w-3.5 h-3.5 text-indigo-600" /> Live Resume Preview
                 </span>
-                <span className="text-[11px] px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+                <span className="text-[11px] px-2 py-0.5 rounded bg-emerald-50 border border-emerald-200 text-emerald-700 font-semibold">
                   ATS Clean Layout
                 </span>
               </div>

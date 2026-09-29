@@ -9,48 +9,54 @@ const solutions = [
     icon: FileText,
     title: 'Resume Rating',
     description: 'Get an instant score out of 100, ATS compatibility check, and clear, actionable fixes tailored to your target role.',
-    color: 'text-cyan-400',
+    color: 'text-blue-600',
+    iconBg: 'bg-blue-50 border-blue-100 text-blue-600',
     delay: 0,
   },
   {
     icon: Video,
     title: 'Live AI Mock Interview',
-    description: 'Camera-on interview with a real-time AI interviewer. Get spoken questions, live transcript, and instant feedback.',
-    color: 'text-violet-400',
+    description: 'Camera-on interview with realistic humanoid AI bots. Get spoken questions, live transcript, and instant STAR feedback.',
+    color: 'text-indigo-600',
+    iconBg: 'bg-indigo-50 border-indigo-100 text-indigo-600',
     delay: 0.1,
   },
   {
     icon: Award,
     title: 'Free Certifications',
-    description: 'Curated, 100% free certification links matched to your skill gaps and target role — from Google, Coursera, and more.',
-    color: 'text-cyan-400',
+    description: 'Curated, 100% free certification links matched to your skill gaps and target role — from Google, freeCodeCamp, and more.',
+    color: 'text-blue-600',
+    iconBg: 'bg-blue-50 border-blue-100 text-blue-600',
     delay: 0.2,
   },
   {
     icon: Map,
     title: 'Personal Guidance',
     description: 'A personalised roadmap built from your resume and interview results, with resources for your exact weak areas.',
-    color: 'text-violet-400',
+    color: 'text-indigo-600',
+    iconBg: 'bg-indigo-50 border-indigo-100 text-indigo-600',
     delay: 0.3,
   },
 ];
 
 export default function SolutionSection() {
   return (
-    <section className="section-padding" aria-labelledby="solution-heading">
-      <div className="max-w-7xl mx-auto">
+    <section className="section-padding bg-[#F9FAFB] border-y border-[#E5E7EB]" aria-labelledby="solution-heading">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-cyan-400 text-sm font-semibold tracking-widest uppercase">Our Solution</span>
-          <h2 id="solution-heading" className="font-display text-4xl sm:text-5xl font-bold text-white mt-3 mb-4">
+          <span className="text-blue-600 text-xs font-bold tracking-widest uppercase block mb-2">
+            Our Solution
+          </span>
+          <h2 id="solution-heading" className="font-sans text-3xl sm:text-5xl font-extrabold text-[#111827] tracking-tight mb-4">
             One AI coach, four pillars
           </h2>
-          <p className="text-white/60 text-lg max-w-2xl mx-auto">
-            Everything you need to land your first job — free, private, and on your device.
+          <p className="text-[#4B5563] text-lg max-w-2xl mx-auto leading-relaxed">
+            Everything you need to land your first tech job — free, private, and stored locally in your browser.
           </p>
         </motion.div>
 
@@ -58,12 +64,12 @@ export default function SolutionSection() {
           {solutions.map((s) => {
             const Icon = s.icon;
             return (
-              <GlassCard key={s.title} delay={s.delay} className="text-center">
-                <IconTile className={`mx-auto mb-4 ${s.color === 'text-cyan-400' ? 'bg-cyan-400/10 border-cyan-400/30' : 'bg-violet-500/10 border-violet-500/30'}`}>
-                  <Icon className={`w-6 h-6 ${s.color}`} />
+              <GlassCard key={s.title} delay={s.delay} className="text-center bg-white border border-[#E5E7EB] shadow-sm">
+                <IconTile className={`mx-auto mb-4 ${s.iconBg}`}>
+                  <Icon className="w-5 h-5" />
                 </IconTile>
-                <h3 className="font-display text-lg font-bold text-white mb-2">{s.title}</h3>
-                <p className="text-white/60 text-sm leading-relaxed">{s.description}</p>
+                <h3 className="font-sans text-lg font-bold text-[#111827] mb-2">{s.title}</h3>
+                <p className="text-[#4B5563] text-sm leading-relaxed">{s.description}</p>
               </GlassCard>
             );
           })}
@@ -73,9 +79,9 @@ export default function SolutionSection() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-center text-cyan-400/80 text-sm font-medium"
+          className="text-center text-[#4B5563] text-sm font-medium mt-6"
         >
-          ⚡ Runs on-device: fast, private and free to access.
+          ⚡ Runs on-device: fast, private, and backed by local SQLite storage.
         </motion.p>
       </div>
     </section>

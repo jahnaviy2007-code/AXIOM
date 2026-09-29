@@ -34,18 +34,23 @@ const cards = [
 
 export default function CertificationsSection() {
   return (
-    <section className="section-padding" aria-labelledby="certs-heading">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-24 bg-white" aria-labelledby="certs-heading">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-cyan-400 text-sm font-semibold tracking-widest uppercase">Free Certifications</span>
-          <h2 id="certs-heading" className="font-display text-4xl sm:text-5xl font-bold text-white mt-3 mb-4">
+          <span className="text-sky-700 text-xs font-semibold tracking-widest uppercase px-3 py-1 rounded-full bg-sky-50 border border-sky-200 inline-block mb-3">
+            Free Certifications
+          </span>
+          <h2 id="certs-heading" className="font-display text-4xl sm:text-5xl font-bold text-[#111827] mt-1 mb-4">
             Choose by requirement
           </h2>
+          <p className="text-[#4B5563] text-base sm:text-lg max-w-2xl mx-auto">
+            Close verified technical skill gaps with zero-cost certified coursework from top engineering organizations.
+          </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-8 items-start">
@@ -54,9 +59,9 @@ export default function CertificationsSection() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="glass rounded-2xl p-8"
+            className="bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl p-8 shadow-[0_1px_3px_rgba(0,0,0,0.06)]"
           >
-            <h3 className="font-display font-bold text-white text-xl mb-6">We filter by:</h3>
+            <h3 className="font-display font-bold text-[#111827] text-xl mb-6">We filter by:</h3>
             <ul className="space-y-4">
               {checklist.map((item, i) => (
                 <motion.li
@@ -67,10 +72,10 @@ export default function CertificationsSection() {
                   transition={{ delay: i * 0.1 }}
                   className="flex items-center gap-3"
                 >
-                  <div className="w-6 h-6 rounded-full bg-cyan-400/20 border border-cyan-400/40 flex items-center justify-center flex-shrink-0">
-                    <span className="text-cyan-400 text-xs font-bold">✓</span>
+                  <div className="w-6 h-6 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center flex-shrink-0">
+                    <span className="text-emerald-600 text-xs font-bold">✓</span>
                   </div>
-                  <span className="text-white/80">{item}</span>
+                  <span className="text-[#4B5563] font-medium">{item}</span>
                 </motion.li>
               ))}
             </ul>
@@ -81,14 +86,14 @@ export default function CertificationsSection() {
             {cards.map((card) => {
               const Icon = card.icon;
               return (
-                <GlassCard key={card.title} delay={card.delay} hover={false}>
+                <GlassCard key={card.title} delay={card.delay} hover={false} className="bg-white border-[#E5E7EB] shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-violet-500/20 border border-violet-500/30 flex items-center justify-center flex-shrink-0">
-                      <Icon className="w-5 h-5 text-violet-400" />
+                    <div className="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center flex-shrink-0">
+                      <Icon className="w-5 h-5 text-indigo-600" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-white mb-1">{card.title}</h4>
-                      <p className="text-white/60 text-sm">{card.desc}</p>
+                      <h4 className="font-semibold text-[#111827] mb-1">{card.title}</h4>
+                      <p className="text-[#4B5563] text-sm">{card.desc}</p>
                     </div>
                   </div>
                 </GlassCard>

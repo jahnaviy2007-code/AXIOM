@@ -309,20 +309,20 @@ export default function InterviewPage() {
   };
 
   return (
-    <div className="min-h-screen bg-navy-950 text-slate-100 relative overflow-hidden flex flex-col">
+    <div className="min-h-screen bg-white text-[#4B5563] relative overflow-hidden flex flex-col">
       <Starfield />
 
       <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-32 pb-24 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-semibold mb-4 font-mono">
-            <Sparkles className="w-4 h-4 text-cyan-400" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold mb-4 font-mono">
+            <Sparkles className="w-4 h-4 text-blue-600" />
             Autonomous Humanoid AI Bots • 100% Client-Side Privacy
           </div>
-          <h1 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-white mb-4">
+          <h1 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-[#111827] mb-4">
             Cybernetic AI Humanoid Mock Interview Studio
           </h1>
-          <p className="text-slate-300 text-base sm:text-lg">
+          <p className="text-[#4B5563] text-base sm:text-lg">
             Face sleek, attractive humanoid AI interview bots with synthetic vocal synthesis, dynamic cyber-HUD telemetry, live audio captions, and STAR technique diagnostics.
           </p>
         </div>
@@ -330,19 +330,19 @@ export default function InterviewPage() {
         {/* STAGE 1: SETUP & PERSONA SELECTION */}
         {stage === "setup" && (
           <div className="max-w-4xl mx-auto">
-            <GlassCard className="p-8 sm:p-10 border-slate-700/80 space-y-8">
+            <GlassCard className="p-8 sm:p-10 border-[#E5E7EB] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06)] space-y-8">
               {/* Select AI Interviewer Persona */}
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <div>
-                    <h3 className="text-base font-bold text-white flex items-center gap-2">
-                      <Sparkles className="w-5 h-5 text-cyan-400" /> Select Your Humanoid AI Interview Bot
+                    <h3 className="text-base font-bold text-[#111827] flex items-center gap-2">
+                      <Sparkles className="w-5 h-5 text-blue-600" /> Select Your Humanoid AI Interview Bot
                     </h3>
-                    <p className="text-xs text-slate-400">
+                    <p className="text-xs text-[#6B7280]">
                       Each autonomous AI bot is tuned with a distinct evaluation style, cognitive depth, and specialty focus.
                     </p>
                   </div>
-                  <span className="text-xs px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 font-semibold font-mono">
+                  <span className="text-xs px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200 font-semibold font-mono">
                     3 Humanoid Bots
                   </span>
                 </div>
@@ -350,12 +350,6 @@ export default function InterviewPage() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {INTERVIEWER_PERSONAS.map((p) => {
                     const isSelected = selectedPersona.id === p.id;
-                    const glowClass =
-                      p.themeColor === "cyan"
-                        ? "border-cyan-400 shadow-cyan-500/30"
-                        : p.themeColor === "violet"
-                        ? "border-violet-400 shadow-violet-500/30"
-                        : "border-amber-400 shadow-amber-500/30";
 
                     return (
                       <div
@@ -363,20 +357,20 @@ export default function InterviewPage() {
                         onClick={() => setSelectedPersona(p)}
                         className={`p-4 rounded-2xl cursor-pointer transition-all border relative overflow-hidden flex flex-col justify-between ${
                           isSelected
-                            ? `bg-slate-900/90 ${glowClass} shadow-xl scale-[1.02]`
-                            : "bg-navy-900/60 border-slate-800 hover:border-slate-600"
+                            ? "bg-blue-50/60 border-blue-600 shadow-md ring-2 ring-blue-500/20 scale-[1.02]"
+                            : "bg-white border-[#E5E7EB] hover:border-gray-300 hover:shadow-sm"
                         }`}
                       >
                         <div>
-                          <div className="relative mb-3 rounded-xl overflow-hidden aspect-square border border-slate-700/70 group">
+                          <div className="relative mb-3 rounded-xl overflow-hidden aspect-square border border-[#E5E7EB] group">
                             <img
                               src={p.avatarUrl}
                               alt={p.name}
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent" />
                             <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between">
-                              <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-slate-950/80 text-white border border-slate-700">
+                              <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-gray-900/90 text-white border border-gray-700">
                                 {p.name}
                               </span>
                               <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
@@ -386,18 +380,18 @@ export default function InterviewPage() {
                           </div>
 
                           <div className="mb-2">
-                            <h4 className="text-sm font-bold text-white leading-tight font-mono">{p.botCodename}</h4>
-                            <span className="text-[11px] text-cyan-300 font-medium block">{p.company}</span>
+                            <h4 className="text-sm font-bold text-[#111827] leading-tight font-mono">{p.botCodename}</h4>
+                            <span className="text-[11px] text-blue-600 font-medium block">{p.company}</span>
                           </div>
 
-                          <p className="text-[11px] text-slate-300 leading-snug mb-2 font-medium">{p.role}</p>
-                          <p className="text-[10px] text-slate-400 line-clamp-2 mb-3">{p.bio}</p>
+                          <p className="text-[11px] text-[#4B5563] leading-snug mb-2 font-medium">{p.role}</p>
+                          <p className="text-[10px] text-[#6B7280] line-clamp-2 mb-3">{p.bio}</p>
                         </div>
 
-                        <div className="pt-2 border-t border-slate-800/80 flex items-center justify-between text-[10px] font-mono">
-                          <span className="text-slate-400">{p.specialtyBadge}</span>
+                        <div className="pt-2 border-t border-[#E5E7EB] flex items-center justify-between text-[10px] font-mono">
+                          <span className="text-[#6B7280]">{p.specialtyBadge}</span>
                           {isSelected && (
-                            <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0" />
+                            <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
                           )}
                         </div>
                       </div>
@@ -408,7 +402,7 @@ export default function InterviewPage() {
 
               {/* Role Selection */}
               <div>
-                <label className="text-xs font-semibold uppercase tracking-wider text-slate-400 block mb-2.5">
+                <label className="text-xs font-semibold uppercase tracking-wider text-[#6B7280] block mb-2.5">
                   Target Specialization Track
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
@@ -424,8 +418,8 @@ export default function InterviewPage() {
                       onClick={() => setRole(r)}
                       className={`p-3 rounded-xl text-xs font-medium text-center transition-all border ${
                         role === r
-                          ? "bg-cyan-500/20 border-cyan-400 text-white font-bold shadow-md shadow-cyan-500/20"
-                          : "bg-navy-900/60 border-slate-800 text-slate-300 hover:border-slate-600"
+                          ? "bg-blue-600 text-white font-bold border-blue-600 shadow-sm"
+                          : "bg-[#F9FAFB] border-[#E5E7EB] text-[#4B5563] hover:bg-gray-100 hover:text-[#111827]"
                       }`}
                     >
                       {r}
@@ -436,7 +430,7 @@ export default function InterviewPage() {
 
               {/* Difficulty Selection */}
               <div>
-                <label className="text-xs font-semibold uppercase tracking-wider text-slate-400 block mb-2.5">
+                <label className="text-xs font-semibold uppercase tracking-wider text-[#6B7280] block mb-2.5">
                   Seniority Level
                 </label>
                 <div className="grid grid-cols-3 gap-3">
@@ -446,8 +440,8 @@ export default function InterviewPage() {
                       onClick={() => setDifficulty(d)}
                       className={`p-3 rounded-xl text-xs font-medium text-center transition-all border ${
                         difficulty === d
-                          ? "bg-violet-600/30 border-violet-400 text-white font-bold shadow-md shadow-violet-500/20"
-                          : "bg-navy-900/60 border-slate-800 text-slate-300 hover:border-slate-600"
+                          ? "bg-indigo-600 text-white font-bold border-indigo-600 shadow-sm"
+                          : "bg-[#F9FAFB] border-[#E5E7EB] text-[#4B5563] hover:bg-gray-100 hover:text-[#111827]"
                       }`}
                     >
                       {d}
@@ -457,17 +451,17 @@ export default function InterviewPage() {
               </div>
 
               {/* Privacy & Camera Check Banner */}
-              <div className="p-4 rounded-xl bg-navy-950/80 border border-slate-700/80 flex items-center justify-between">
+              <div className="p-4 rounded-xl bg-[#F9FAFB] border border-[#E5E7EB] flex items-center justify-between">
                 <div className="space-y-1">
-                  <span className="text-xs font-semibold text-white flex items-center gap-1.5">
-                    <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                  <span className="text-xs font-semibold text-[#111827] flex items-center gap-1.5">
+                    <ShieldCheck className="w-4 h-4 text-emerald-600" />
                     Zero Remote Streaming • Direct On-Device Evaluation
                   </span>
-                  <p className="text-[11px] text-slate-400">
+                  <p className="text-[11px] text-[#6B7280]">
                     Video frames and speech are analyzed strictly in your local browser sandbox.
                   </p>
                 </div>
-                <span className="text-[11px] text-emerald-400 font-semibold px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30">
+                <span className="text-[11px] text-emerald-700 font-semibold px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200">
                   Ready
                 </span>
               </div>
@@ -475,7 +469,7 @@ export default function InterviewPage() {
               {/* Enter Interview Studio CTA */}
               <button
                 onClick={handleStartInterview}
-                className="w-full py-4 rounded-xl bg-gradient-to-r from-cyan-400 to-violet-500 text-navy-950 font-bold text-base hover:opacity-95 transition-all shadow-xl shadow-cyan-500/25 flex items-center justify-center gap-2"
+                className="w-full py-4 rounded-xl bg-gray-900 hover:bg-black text-white font-bold text-base transition-all shadow-[0_1px_3px_rgba(0,0,0,0.08)] flex items-center justify-center gap-2"
               >
                 <span>Enter Live Video Room with {selectedPersona.name}</span>
                 <ArrowRight className="w-5 h-5" />
@@ -488,18 +482,18 @@ export default function InterviewPage() {
         {stage === "active" && questions[currentIndex] && (
           <div className="space-y-6">
             {/* Top Conference Status Bar */}
-            <div className="flex flex-wrap items-center justify-between gap-4 bg-navy-900/80 border border-slate-700/70 p-4 rounded-2xl backdrop-blur-md">
+            <div className="flex flex-wrap items-center justify-between gap-4 bg-white border border-[#E5E7EB] p-4 rounded-2xl shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
               <div className="flex items-center gap-3">
-                <span className="text-xs font-bold px-3 py-1 rounded-full bg-cyan-500/15 border border-cyan-500/30 text-cyan-300">
+                <span className="text-xs font-bold px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700">
                   Question {currentIndex + 1} of {questions.length}
                 </span>
-                <span className="text-xs text-slate-300">
-                  Interviewer: <strong className="text-white">{selectedPersona.name}</strong> • {role} ({difficulty})
+                <span className="text-xs text-[#4B5563]">
+                  Interviewer: <strong className="text-[#111827]">{selectedPersona.name}</strong> • {role} ({difficulty})
                 </span>
               </div>
 
               <div className="flex items-center gap-4">
-                <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 bg-navy-950 px-3 py-1 rounded-lg border border-slate-800">
+                <div className="flex items-center gap-2 text-xs font-mono text-blue-700 bg-[#F9FAFB] px-3 py-1 rounded-lg border border-[#E5E7EB]">
                   <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse" />
                   <span>
                     Answer Time: {Math.floor(secondsElapsed / 60)}:
@@ -509,7 +503,7 @@ export default function InterviewPage() {
 
                 <button
                   onClick={() => setStage("setup")}
-                  className="text-xs text-slate-400 hover:text-white transition-colors"
+                  className="text-xs text-[#6B7280] hover:text-rose-600 transition-colors"
                 >
                   Leave Call
                 </button>
@@ -529,8 +523,8 @@ export default function InterviewPage() {
                 />
 
                 {/* Question Context & Hint Box */}
-                <div className="p-4 rounded-xl bg-navy-900/60 border border-slate-800 text-xs text-slate-300">
-                  <span className="text-[10px] uppercase font-bold text-violet-400 tracking-wider block mb-1">
+                <div className="p-4 rounded-xl bg-[#F9FAFB] border border-[#E5E7EB] text-xs text-[#4B5563]">
+                  <span className="text-[10px] uppercase font-bold text-indigo-600 tracking-wider block mb-1">
                     Interviewer Context & Intent:
                   </span>
                   <p>{questions[currentIndex].contextHint}</p>
@@ -538,10 +532,10 @@ export default function InterviewPage() {
               </div>
 
               {/* Feed 2: Candidate Video Feed & Real-time HUD */}
-              <GlassCard className="p-5 flex flex-col justify-between min-h-[460px]">
+              <GlassCard className="p-5 flex flex-col justify-between min-h-[460px] bg-white border-[#E5E7EB] shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
                 <div>
                   {/* Candidate Camera Stream */}
-                  <div className="relative w-full h-[250px] sm:h-[280px] bg-slate-900 rounded-xl overflow-hidden flex items-center justify-center border border-slate-800 mb-4">
+                  <div className="relative w-full h-[250px] sm:h-[280px] bg-gray-900 rounded-xl overflow-hidden flex items-center justify-center border border-gray-800 mb-4">
                     {hasCamera && cameraEnabled ? (
                       <video
                         ref={videoRef}
@@ -552,54 +546,54 @@ export default function InterviewPage() {
                       />
                     ) : (
                       <div className="text-center p-6 space-y-2">
-                        <div className="w-14 h-14 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center mx-auto text-slate-400">
+                        <div className="w-14 h-14 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center mx-auto text-gray-400">
                           <VideoOff className="w-7 h-7" />
                         </div>
-                        <p className="text-xs text-slate-400">Camera preview inactive or permissions denied.</p>
-                        <span className="text-[10px] text-cyan-400">(Voice and typing are fully operational)</span>
+                        <p className="text-xs text-gray-400">Camera preview inactive or permissions denied.</p>
+                        <span className="text-[10px] text-blue-400">(Voice and typing are fully operational)</span>
                       </div>
                     )}
 
                     {/* HUD Overlay: Real-Time Eye Contact & Posture Meters */}
-                    <div className="absolute top-3 left-3 bg-navy-950/85 backdrop-blur-md px-2.5 py-1 rounded-lg border border-slate-700 text-[11px] text-emerald-400 flex items-center gap-1.5 shadow-lg">
+                    <div className="absolute top-3 left-3 bg-gray-950/85 backdrop-blur-md px-2.5 py-1 rounded-lg border border-gray-700 text-[11px] text-emerald-400 flex items-center gap-1.5 shadow-lg">
                       <Eye className="w-3.5 h-3.5" />
                       <span>Eye Contact: 88% (Good)</span>
                     </div>
 
-                    <div className="absolute top-3 right-3 bg-navy-950/85 backdrop-blur-md px-2.5 py-1 rounded-lg border border-slate-700 text-[11px] text-cyan-300 shadow-lg">
+                    <div className="absolute top-3 right-3 bg-gray-950/85 backdrop-blur-md px-2.5 py-1 rounded-lg border border-gray-700 text-[11px] text-blue-300 shadow-lg">
                       Posture: Centered
                     </div>
 
                     {/* Thinking Time Overlay */}
                     {thinkingTimer !== null && (
-                      <div className="absolute inset-0 bg-navy-950/80 backdrop-blur-sm flex flex-col items-center justify-center text-center p-4">
-                        <span className="text-xs font-semibold text-slate-300">Gathering Thoughts...</span>
-                        <span className="font-serif text-5xl font-bold text-cyan-400 my-2">{thinkingTimer}</span>
-                        <span className="text-[11px] text-slate-400">Recording will start automatically</span>
+                      <div className="absolute inset-0 bg-gray-950/80 backdrop-blur-sm flex flex-col items-center justify-center text-center p-4">
+                        <span className="text-xs font-semibold text-gray-300">Gathering Thoughts...</span>
+                        <span className="font-serif text-5xl font-bold text-blue-400 my-2">{thinkingTimer}</span>
+                        <span className="text-[11px] text-gray-400">Recording will start automatically</span>
                       </div>
                     )}
                   </div>
 
                   {/* Device Control Pills */}
-                  <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-800">
+                  <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#E5E7EB]">
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() => setCameraEnabled(!cameraEnabled)}
                         className={`p-2 rounded-lg border text-xs flex items-center gap-1.5 transition-colors ${
-                          cameraEnabled ? "bg-slate-800 border-slate-700 text-slate-200" : "bg-rose-500/20 text-rose-300 border-rose-500/30"
+                          cameraEnabled ? "bg-[#F9FAFB] border-[#E5E7EB] text-[#4B5563] hover:bg-gray-100" : "bg-rose-50 text-rose-700 border-rose-200"
                         }`}
                       >
-                        {cameraEnabled ? <Video className="w-3.5 h-3.5 text-cyan-400" /> : <VideoOff className="w-3.5 h-3.5" />}
+                        {cameraEnabled ? <Video className="w-3.5 h-3.5 text-blue-600" /> : <VideoOff className="w-3.5 h-3.5" />}
                         <span className="text-[11px]">{cameraEnabled ? "Cam On" : "Cam Off"}</span>
                       </button>
 
                       <button
                         onClick={() => setMicEnabled(!micEnabled)}
                         className={`p-2 rounded-lg border text-xs flex items-center gap-1.5 transition-colors ${
-                          micEnabled ? "bg-slate-800 border-slate-700 text-slate-200" : "bg-rose-500/20 text-rose-300 border-rose-500/30"
+                          micEnabled ? "bg-[#F9FAFB] border-[#E5E7EB] text-[#4B5563] hover:bg-gray-100" : "bg-rose-50 text-rose-700 border-rose-200"
                         }`}
                       >
-                        {micEnabled ? <Mic className="w-3.5 h-3.5 text-violet-400" /> : <MicOff className="w-3.5 h-3.5" />}
+                        {micEnabled ? <Mic className="w-3.5 h-3.5 text-indigo-600" /> : <MicOff className="w-3.5 h-3.5" />}
                         <span className="text-[11px]">{micEnabled ? "Mic Active" : "Muted"}</span>
                       </button>
                     </div>
@@ -608,9 +602,9 @@ export default function InterviewPage() {
                     <button
                       onClick={() => setThinkingTimer(10)}
                       disabled={isRecording || thinkingTimer !== null}
-                      className="px-3 py-1.5 rounded-lg bg-navy-950 hover:bg-slate-800 border border-slate-700 text-xs text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors disabled:opacity-40"
+                      className="px-3 py-1.5 rounded-lg bg-[#F9FAFB] hover:bg-gray-100 border border-[#E5E7EB] text-xs text-[#4B5563] hover:text-[#111827] flex items-center gap-1.5 transition-colors disabled:opacity-40"
                     >
-                      <Clock className="w-3.5 h-3.5 text-cyan-400" />
+                      <Clock className="w-3.5 h-3.5 text-blue-600" />
                       <span>Take 10s to Think</span>
                     </button>
                   </div>
@@ -618,12 +612,12 @@ export default function InterviewPage() {
                   {/* Candidate Real-Time Answer Transcript & Input */}
                   <div className="space-y-2 mb-4">
                     <div className="flex items-center justify-between">
-                      <label className="text-xs font-semibold text-slate-300 flex items-center gap-1.5">
-                        <Sparkles className="w-3.5 h-3.5 text-cyan-400" /> Your Live Speech Transcript:
+                      <label className="text-xs font-semibold text-[#111827] flex items-center gap-1.5">
+                        <Sparkles className="w-3.5 h-3.5 text-blue-600" /> Your Live Speech Transcript:
                       </label>
                       <button
                         onClick={handleLoadDemoAnswer}
-                        className="text-[11px] text-violet-300 hover:text-white underline"
+                        className="text-[11px] text-blue-600 hover:text-blue-800 underline"
                       >
                         Insert Demo Answer
                       </button>
@@ -633,19 +627,19 @@ export default function InterviewPage() {
                       onChange={(e) => setUserAnswer(e.target.value)}
                       placeholder="Click 'Record Voice Answer' or start speaking. Your speech appears here in real time..."
                       rows={4}
-                      className="w-full bg-navy-950/80 border border-slate-700 rounded-xl p-3 text-xs text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-cyan-400"
+                      className="w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl p-3 text-xs text-[#111827] placeholder:text-[#9CA3AF] focus:outline-none focus:border-blue-500 focus:bg-white transition-colors"
                     />
                   </div>
                 </div>
 
                 {/* Bottom Action Controls */}
-                <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-slate-800">
+                <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-[#E5E7EB]">
                   <button
                     onClick={toggleRecording}
                     className={`px-5 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 transition-all ${
                       isRecording
-                        ? "bg-rose-500 text-white animate-pulse shadow-lg shadow-rose-500/25"
-                        : "bg-cyan-500/20 border border-cyan-400 text-cyan-300 hover:bg-cyan-500/30"
+                        ? "bg-rose-500 text-white animate-pulse shadow-md shadow-rose-500/20"
+                        : "bg-blue-50 border border-blue-200 text-blue-700 hover:bg-blue-100"
                     }`}
                   >
                     <Mic className="w-4 h-4" />
@@ -654,7 +648,7 @@ export default function InterviewPage() {
 
                   <button
                     onClick={handleNextQuestion}
-                    className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-400 to-violet-500 text-navy-950 font-bold text-xs hover:opacity-95 transition-all shadow-lg shadow-cyan-500/20 flex items-center gap-1.5"
+                    className="px-6 py-2.5 rounded-xl bg-gray-900 hover:bg-black text-white font-bold text-xs transition-all shadow-[0_1px_3px_rgba(0,0,0,0.08)] flex items-center gap-1.5"
                   >
                     <span>
                       {currentIndex + 1 === questions.length ? "Submit & View Report" : "Next Question"}
@@ -670,75 +664,75 @@ export default function InterviewPage() {
         {/* STAGE 3: REALISTIC POST-INTERVIEW DIAGNOSTIC */}
         {stage === "report" && finalReport && (
           <div className="space-y-8 animate-fadeIn max-w-4xl mx-auto">
-            <GlassCard className="p-8 border-violet-500/40 relative overflow-hidden">
-              <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-slate-800">
+            <GlassCard className="p-8 border-[#E5E7EB] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06)] relative overflow-hidden">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-[#E5E7EB]">
                 <div className="space-y-2 text-center md:text-left">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-semibold">
-                    <UserCheck className="w-3.5 h-3.5 text-cyan-400" />
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold">
+                    <UserCheck className="w-3.5 h-3.5 text-blue-600" />
                     Evaluated by {selectedPersona.name} ({selectedPersona.company})
                   </div>
-                  <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">
+                  <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#111827]">
                     {finalReport.role} Interview Assessment
                   </h2>
-                  <p className="text-xs text-slate-400">
+                  <p className="text-xs text-[#6B7280]">
                     Candidate Simulation • Seniority: {finalReport.difficulty} • Date: {finalReport.date}
                   </p>
                 </div>
 
-                <div className="flex flex-col items-center justify-center p-5 rounded-2xl bg-navy-950/80 border border-slate-700/80 min-w-[150px]">
-                  <span className="text-[11px] uppercase tracking-wider text-slate-400">Hiring Probability</span>
-                  <span className="font-serif text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-violet-400">
+                <div className="flex flex-col items-center justify-center p-5 rounded-2xl bg-[#F9FAFB] border border-[#E5E7EB] min-w-[150px]">
+                  <span className="text-[11px] uppercase tracking-wider text-[#6B7280]">Hiring Probability</span>
+                  <span className="font-serif text-4xl font-bold text-blue-600">
                     {finalReport.overallScore}%
                   </span>
-                  <span className="text-[10px] text-emerald-400 font-medium mt-1">Hire Ready Benchmark</span>
+                  <span className="text-[10px] text-emerald-600 font-semibold mt-1">Hire Ready Benchmark</span>
                 </div>
               </div>
 
               {/* 4 Diagnostic Metrics Grid */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 my-6">
-                <div className="p-4 rounded-xl bg-navy-950/60 border border-slate-800">
-                  <span className="text-[10px] text-slate-400 block mb-1">Technical Rigor</span>
-                  <span className="text-xl font-bold text-cyan-400">{finalReport.technicalScore}%</span>
-                  <span className="text-[10px] text-slate-500 block">Concept fidelity</span>
+                <div className="p-4 rounded-xl bg-[#F9FAFB] border border-[#E5E7EB]">
+                  <span className="text-[10px] text-[#6B7280] block mb-1">Technical Rigor</span>
+                  <span className="text-xl font-bold text-blue-600">{finalReport.technicalScore}%</span>
+                  <span className="text-[10px] text-[#9CA3AF] block">Concept fidelity</span>
                 </div>
 
-                <div className="p-4 rounded-xl bg-navy-950/60 border border-slate-800">
-                  <span className="text-[10px] text-slate-400 block mb-1">Communication Poise</span>
-                  <span className="text-xl font-bold text-violet-400">{finalReport.communicationScore}%</span>
-                  <span className="text-[10px] text-slate-500 block">STAR alignment</span>
+                <div className="p-4 rounded-xl bg-[#F9FAFB] border border-[#E5E7EB]">
+                  <span className="text-[10px] text-[#6B7280] block mb-1">Communication Poise</span>
+                  <span className="text-xl font-bold text-indigo-600">{finalReport.communicationScore}%</span>
+                  <span className="text-[10px] text-[#9CA3AF] block">STAR alignment</span>
                 </div>
 
-                <div className="p-4 rounded-xl bg-navy-950/60 border border-slate-800">
-                  <span className="text-[10px] text-slate-400 block mb-1">Vocal Pacing</span>
-                  <span className="text-xl font-bold text-emerald-400">{finalReport.pacingWpm} WPM</span>
-                  <span className="text-[10px] text-slate-500 block">Target: 120-150 WPM</span>
+                <div className="p-4 rounded-xl bg-[#F9FAFB] border border-[#E5E7EB]">
+                  <span className="text-[10px] text-[#6B7280] block mb-1">Vocal Pacing</span>
+                  <span className="text-xl font-bold text-emerald-600">{finalReport.pacingWpm} WPM</span>
+                  <span className="text-[10px] text-[#9CA3AF] block">Target: 120-150 WPM</span>
                 </div>
 
-                <div className="p-4 rounded-xl bg-navy-950/60 border border-slate-800">
-                  <span className="text-[10px] text-slate-400 block mb-1">Hesitation Fillers</span>
-                  <span className="text-xl font-bold text-amber-400">{finalReport.fillerWordCount} total</span>
-                  <span className="text-[10px] text-slate-500 block">Minimal hesitations</span>
+                <div className="p-4 rounded-xl bg-[#F9FAFB] border border-[#E5E7EB]">
+                  <span className="text-[10px] text-[#6B7280] block mb-1">Hesitation Fillers</span>
+                  <span className="text-xl font-bold text-amber-600">{finalReport.fillerWordCount} total</span>
+                  <span className="text-[10px] text-[#9CA3AF] block">Minimal hesitations</span>
                 </div>
               </div>
 
               {/* Strengths & Weaknesses */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/20">
-                  <h4 className="text-xs font-semibold text-emerald-300 flex items-center gap-1.5 mb-2">
-                    <CheckCircle2 className="w-3.5 h-3.5" /> High-Impact Strengths Identified
+                <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200">
+                  <h4 className="text-xs font-semibold text-emerald-900 flex items-center gap-1.5 mb-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> High-Impact Strengths Identified
                   </h4>
-                  <ul className="space-y-1.5 text-xs text-slate-300">
+                  <ul className="space-y-1.5 text-xs text-emerald-800">
                     {finalReport.feedback.strengths.map((s, idx) => (
                       <li key={idx}>+ {s}</li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="p-4 rounded-xl bg-amber-500/5 border border-amber-500/20">
-                  <h4 className="text-xs font-semibold text-amber-300 flex items-center gap-1.5 mb-2">
-                    <AlertCircle className="w-3.5 h-3.5" /> Interviewer Recommendations
+                <div className="p-4 rounded-xl bg-amber-50 border border-amber-200">
+                  <h4 className="text-xs font-semibold text-amber-900 flex items-center gap-1.5 mb-2">
+                    <AlertCircle className="w-3.5 h-3.5 text-amber-600" /> Interviewer Recommendations
                   </h4>
-                  <ul className="space-y-1.5 text-xs text-slate-300">
+                  <ul className="space-y-1.5 text-xs text-amber-800">
                     {finalReport.feedback.improvements.map((imp, idx) => (
                       <li key={idx}>• {imp}</li>
                     ))}
@@ -749,32 +743,32 @@ export default function InterviewPage() {
 
             {/* Question by Question Review */}
             <div className="space-y-4">
-              <h3 className="font-serif text-xl font-bold text-white">
+              <h3 className="font-serif text-xl font-bold text-[#111827]">
                 Detailed Question-by-Question Analysis
               </h3>
 
               {finalReport.qaHistory.map((qa, index) => (
-                <GlassCard key={index} className="p-6 border-slate-800 space-y-4">
+                <GlassCard key={index} className="p-6 border-[#E5E7EB] bg-white shadow-[0_1px_3px_rgba(0,0,0,0.06)] space-y-4">
                   <div className="flex items-start justify-between gap-4">
-                    <span className="text-xs font-bold text-cyan-400">Q{index + 1}: {qa.question}</span>
+                    <span className="text-xs font-bold text-blue-600">Q{index + 1}: {qa.question}</span>
                   </div>
 
-                  <div className="p-3.5 rounded-lg bg-navy-950/80 border border-slate-800 text-xs text-slate-300">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">
+                  <div className="p-3.5 rounded-lg bg-[#F9FAFB] border border-[#E5E7EB] text-xs text-[#4B5563]">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#6B7280] block mb-1">
                       Your Spoken Answer:
                     </span>
                     <p className="italic">"{qa.answer}"</p>
                   </div>
 
-                  <div className="p-3.5 rounded-lg bg-violet-950/20 border border-violet-500/20 text-xs text-violet-200">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-violet-400 block mb-1">
+                  <div className="p-3.5 rounded-lg bg-indigo-50/60 border border-indigo-200 text-xs text-indigo-950">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-700 block mb-1">
                       {selectedPersona.name}'s Critique:
                     </span>
                     <p>{qa.critique}</p>
                   </div>
 
-                  <div className="p-3.5 rounded-lg bg-emerald-950/20 border border-emerald-500/20 text-xs text-emerald-200">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400 block mb-1">
+                  <div className="p-3.5 rounded-lg bg-emerald-50/60 border border-emerald-200 text-xs text-emerald-950">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700 block mb-1">
                       Model Strong Answer (STAR Method):
                     </span>
                     <p>{qa.sampleStrongAnswer}</p>
@@ -787,15 +781,15 @@ export default function InterviewPage() {
             <div className="flex flex-wrap items-center justify-between gap-4 pt-6">
               <button
                 onClick={() => setStage("setup")}
-                className="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs border border-slate-600 flex items-center gap-2 transition-colors"
+                className="px-6 py-3 rounded-xl bg-white hover:bg-gray-50 text-[#4B5563] hover:text-[#111827] font-semibold text-xs border border-[#E5E7EB] flex items-center gap-2 transition-colors shadow-sm"
               >
-                <RotateCcw className="w-4 h-4 text-cyan-400" />
+                <RotateCcw className="w-4 h-4 text-blue-600" />
                 Retake Simulation with Another Interviewer
               </button>
 
               <Link
                 href="/dashboard"
-                className="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-400 to-violet-500 text-navy-950 font-bold text-xs hover:opacity-90 transition-all shadow-lg shadow-cyan-500/20 flex items-center gap-2"
+                className="px-6 py-3 rounded-xl bg-gray-900 hover:bg-black text-white font-bold text-xs transition-all shadow-[0_1px_3px_rgba(0,0,0,0.08)] flex items-center gap-2"
               >
                 <BarChart3 className="w-4 h-4" />
                 Save Attempt & View Dashboard

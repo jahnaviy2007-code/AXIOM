@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -28,9 +28,9 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased">
+      <body className="bg-white text-gray-900 antialiased selection:bg-blue-100 selection:text-blue-900">
         <Navbar />
-        <main className="relative z-10">
+        <main className="relative z-10 bg-white">
           {children}
         </main>
       </body>

@@ -159,55 +159,55 @@ export default function SessionsPage() {
     const doc = new jsPDF({
       orientation: "landscape",
       unit: "pt",
-      format: "letter"
+      format: "letter",
     });
 
     const width = 792;
     const height = 612;
 
-    // Dark Background
-    doc.setFillColor(11, 15, 46); // Navy-950
+    // Clean Premium White Background
+    doc.setFillColor(255, 255, 255);
     doc.rect(0, 0, width, height, "F");
 
-    // Luxury Cyan & Violet Borders
-    doc.setDrawColor(34, 211, 238); // Cyan
-    doc.setLineWidth(4);
+    // Luxury Navy & Indigo Borders
+    doc.setDrawColor(17, 24, 39);
+    doc.setLineWidth(3);
     doc.roundedRect(30, 30, width - 60, height - 60, 16, 16, "S");
 
-    doc.setDrawColor(124, 92, 255); // Violet
+    doc.setDrawColor(79, 70, 229);
     doc.setLineWidth(1.5);
     doc.roundedRect(42, 42, width - 84, height - 84, 12, 12, "S");
 
     // Header Badge
-    doc.setTextColor(34, 211, 238);
+    doc.setTextColor(79, 70, 229);
     doc.setFont("helvetica", "bold");
     doc.setFontSize(13);
     doc.text("AXIOM CAREER INTELLIGENCE & ENGINEERING ACADEMY", width / 2, 90, { align: "center" });
 
     // Certificate Title
-    doc.setTextColor(255, 255, 255);
+    doc.setTextColor(17, 24, 39);
     doc.setFont("times", "bold");
     doc.setFontSize(30);
     doc.text("Foundations of Tech & Engineering Readiness", width / 2, 140, { align: "center" });
 
     doc.setFont("helvetica", "normal");
     doc.setFontSize(11);
-    doc.setTextColor(148, 163, 184);
+    doc.setTextColor(107, 114, 128);
     doc.text("THIS VERIFIED CERTIFICATE OF ACHIEVEMENT IS PROUDLY CONFERRED UPON", width / 2, 185, { align: "center" });
 
     // Recipient Name
-    doc.setTextColor(34, 211, 238);
+    doc.setTextColor(17, 24, 39);
     doc.setFont("times", "bold");
     doc.setFontSize(32);
     doc.text(studentName.toUpperCase(), width / 2, 240, { align: "center" });
 
     // Decorative underline
-    doc.setDrawColor(34, 211, 238);
-    doc.setLineWidth(1);
+    doc.setDrawColor(79, 70, 229);
+    doc.setLineWidth(1.5);
     doc.line(width / 2 - 180, 252, width / 2 + 180, 252);
 
     // Curriculum Description
-    doc.setTextColor(226, 232, 240);
+    doc.setTextColor(75, 85, 99);
     doc.setFont("helvetica", "normal");
     doc.setFontSize(11.5);
     doc.text(
@@ -225,7 +225,7 @@ export default function SessionsPage() {
 
     // Skills Matrix Badge
     doc.setFontSize(10);
-    doc.setTextColor(124, 92, 255);
+    doc.setTextColor(79, 70, 229);
     doc.text("VERIFIED COMPETENCIES: GIT & GITHUB • FULL-STACK DEPLOYMENT • AGILE SPRINTS • STAR INTERVIEWING", width / 2, 355, { align: "center" });
 
     // Footer Credentials & Verification
@@ -233,18 +233,18 @@ export default function SessionsPage() {
     const today = new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
 
     doc.setFontSize(9.5);
-    doc.setTextColor(148, 163, 184);
+    doc.setTextColor(107, 114, 128);
     doc.text(`Credential ID: ${certId}`, 70, 480);
     doc.text(`Issued On: ${today}`, 70, 500);
     doc.text("Verification URL: axiom-career.org/verify", 70, 520);
 
     // Signatures
-    doc.setTextColor(255, 255, 255);
+    doc.setTextColor(17, 24, 39);
     doc.setFont("helvetica", "bold");
     doc.text("Axiom Engineering Board", 560, 480);
     doc.setFont("helvetica", "normal");
     doc.setFontSize(9);
-    doc.setTextColor(148, 163, 184);
+    doc.setTextColor(107, 114, 128);
     doc.text("Dean of Software Engineering Education", 560, 500);
 
     // Persist verified certificate to SQLite backend DB
@@ -273,45 +273,45 @@ export default function SessionsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-navy-950 text-slate-100 relative overflow-hidden flex flex-col">
+    <div className="min-h-screen bg-white text-[#4B5563] relative overflow-hidden flex flex-col">
       <Starfield />
 
       <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-32 pb-24 relative z-10">
         {/* Header Banner */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-semibold mb-4">
-            <PlayCircle className="w-4 h-4 text-cyan-400" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold mb-4">
+            <PlayCircle className="w-4 h-4 text-blue-600" />
             3 Foundational Tech Sessions • Beginner to Junior Engineer
           </div>
-          <h1 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-white mb-4">
+          <h1 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-[#111827] mb-4">
             New to the Tech World? Start Here.
           </h1>
-          <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
+          <p className="text-[#4B5563] text-base sm:text-lg leading-relaxed">
             3 foundational video sessions teaching you how software engineering works in reality, how to ship real projects with Git, and how to pass technical interviews—with copyable resume templates and a verified certificate.
           </p>
 
           {/* Progress Tracker Card */}
-          <div className="mt-6 p-4 rounded-2xl bg-navy-900/60 border border-slate-700/60 backdrop-blur-md flex flex-wrap items-center justify-between gap-4 max-w-xl mx-auto">
+          <div className="mt-6 p-4 rounded-2xl bg-[#F9FAFB] border border-[#E5E7EB] shadow-[0_1px_3px_rgba(0,0,0,0.06)] flex flex-wrap items-center justify-between gap-4 max-w-xl mx-auto">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
+              <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600">
                 <Award className="w-5 h-5" />
               </div>
               <div className="text-left">
-                <span className="text-xs font-bold text-white block">Certificate Progress</span>
-                <span className="text-[11px] text-slate-400">
+                <span className="text-xs font-bold text-[#111827] block">Certificate Progress</span>
+                <span className="text-[11px] text-[#6B7280]">
                   {completedSessions.length} of {SESSIONS.length} Sessions Completed
                 </span>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="w-32 bg-slate-800 h-2 rounded-full overflow-hidden">
+              <div className="w-32 bg-gray-200 h-2 rounded-full overflow-hidden">
                 <div
-                  className="bg-gradient-to-r from-cyan-400 to-violet-500 h-full rounded-full transition-all duration-500"
+                  className="bg-blue-600 h-full rounded-full transition-all duration-500"
                   style={{ width: `${(completedSessions.length / SESSIONS.length) * 100}%` }}
                 />
               </div>
-              <span className="text-xs font-bold text-cyan-400">
+              <span className="text-xs font-bold text-blue-700">
                 {Math.round((completedSessions.length / SESSIONS.length) * 100)}%
               </span>
             </div>
@@ -322,7 +322,7 @@ export default function SessionsPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
           {/* Left Column: Session Selector List (Col 4) */}
           <div className="lg:col-span-4 space-y-4">
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-400 block mb-1">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#6B7280] block mb-1">
               Curriculum Sessions
             </span>
 
@@ -338,25 +338,25 @@ export default function SessionsPage() {
                   }}
                   className={`p-5 rounded-2xl cursor-pointer transition-all border ${
                     isSelected
-                      ? "bg-violet-600/20 border-violet-400 shadow-xl shadow-violet-500/15"
-                      : "bg-navy-900/60 border-slate-800 hover:border-slate-700"
+                      ? "bg-blue-50/70 border-blue-600 shadow-sm ring-1 ring-blue-500/20"
+                      : "bg-white border-[#E5E7EB] hover:border-gray-300 hover:shadow-sm"
                   }`}
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-bold text-white">{session.title}</span>
+                    <span className="text-xs font-bold text-[#111827]">{session.title}</span>
                     {isDone ? (
-                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-semibold flex items-center gap-1">
+                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 font-semibold flex items-center gap-1">
                         <CheckCircle2 className="w-3 h-3" /> Completed
                       </span>
                     ) : (
-                      <span className="text-[10px] text-slate-400 flex items-center gap-1">
+                      <span className="text-[10px] text-[#6B7280] flex items-center gap-1">
                         <Clock className="w-3 h-3" /> {session.duration}
                       </span>
                     )}
                   </div>
 
-                  <p className="text-xs text-slate-300 font-medium mb-1.5">{session.subtitle}</p>
-                  <span className="text-[10px] text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded-md inline-block">
+                  <p className="text-xs text-[#4B5563] font-medium mb-1.5">{session.subtitle}</p>
+                  <span className="text-[10px] text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md inline-block font-medium">
                     {session.speaker}
                   </span>
                 </div>
@@ -364,16 +364,16 @@ export default function SessionsPage() {
             })}
 
             {/* Resume Builder Quick Link */}
-            <div className="p-5 rounded-2xl bg-gradient-to-br from-cyan-950/40 to-navy-900/80 border border-cyan-500/30 space-y-3">
-              <span className="text-xs font-bold text-white flex items-center gap-1.5">
-                <Sparkles className="w-4 h-4 text-cyan-400" /> Put These Skills to Work
+            <div className="p-5 rounded-2xl bg-[#F9FAFB] border border-[#E5E7EB] shadow-[0_1px_3px_rgba(0,0,0,0.06)] space-y-3">
+              <span className="text-xs font-bold text-[#111827] flex items-center gap-1.5">
+                <Sparkles className="w-4 h-4 text-blue-600" /> Put These Skills to Work
               </span>
-              <p className="text-[11px] text-slate-300 leading-relaxed">
+              <p className="text-[11px] text-[#4B5563] leading-relaxed">
                 Ready to turn what you learned into an actual resume? Use our 5-step AI builder from scratch.
               </p>
               <Link
                 href="/builder"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-cyan-400 hover:text-cyan-300 underline"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-800 underline"
               >
                 Open AI Resume Builder <ArrowRight className="w-3.5 h-3.5" />
               </Link>
@@ -382,20 +382,19 @@ export default function SessionsPage() {
 
           {/* Right Column: Active Video Player & Resume Feature Widget (Col 8) */}
           <div className="lg:col-span-8 space-y-6">
-            <GlassCard className="p-6 sm:p-8 border-slate-700/80">
+            <GlassCard className="p-6 sm:p-8 bg-white border-[#E5E7EB] shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
               {/* Interactive Video Player Canvas */}
-              <div className="relative w-full h-[300px] sm:h-[380px] bg-slate-950 rounded-2xl overflow-hidden border border-slate-800 flex flex-col justify-between p-6 mb-6 group">
+              <div className="relative w-full h-[300px] sm:h-[380px] bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 flex flex-col justify-between p-6 mb-6 group shadow-md">
                 {/* Background video simulation art */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-navy-950 via-slate-900 to-violet-950/80 opacity-95" />
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-cyan-500/10 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-gray-950 via-gray-900 to-indigo-950/80 opacity-95" />
 
                 {/* Top Info Bar */}
                 <div className="relative z-10 flex items-center justify-between">
-                  <span className="text-xs font-semibold px-3 py-1 rounded-full bg-navy-950/90 border border-slate-700 text-cyan-300 flex items-center gap-1.5">
-                    <Video className="w-3.5 h-3.5 text-cyan-400" />
+                  <span className="text-xs font-semibold px-3 py-1 rounded-full bg-gray-950/90 border border-gray-700 text-blue-300 flex items-center gap-1.5">
+                    <Video className="w-3.5 h-3.5 text-blue-400" />
                     Session {activeSession.id} • {activeSession.duration}
                   </span>
-                  <span className="text-xs text-slate-300 bg-navy-950/90 px-3 py-1 rounded-lg border border-slate-800">
+                  <span className="text-xs text-gray-300 bg-gray-950/90 px-3 py-1 rounded-lg border border-gray-800">
                     {activeSession.level}
                   </span>
                 </div>
@@ -404,29 +403,29 @@ export default function SessionsPage() {
                 <div className="relative z-10 text-center my-auto">
                   <button
                     onClick={handleTogglePlay}
-                    className="w-20 h-20 rounded-full bg-cyan-400 hover:bg-cyan-300 text-navy-950 flex items-center justify-center mx-auto mb-3 shadow-2xl shadow-cyan-400/40 hover:scale-105 transition-all"
+                    className="w-20 h-20 rounded-full bg-blue-500 hover:bg-blue-400 text-white flex items-center justify-center mx-auto mb-3 shadow-xl hover:scale-105 transition-all"
                   >
                     {isPlaying ? <Pause className="w-8 h-8" /> : <Play className="w-8 h-8 ml-1" />}
                   </button>
                   <h3 className="font-serif text-xl sm:text-2xl font-bold text-white max-w-lg mx-auto leading-snug">
                     {activeSession.title}
                   </h3>
-                  <p className="text-xs text-slate-400 mt-1">Instructor: {activeSession.speaker}</p>
+                  <p className="text-xs text-gray-300 mt-1">Instructor: {activeSession.speaker}</p>
                 </div>
 
                 {/* Bottom Scrub Controls */}
                 <div className="relative z-10 space-y-2">
-                  <div className="w-full bg-slate-800/80 h-2 rounded-full overflow-hidden cursor-pointer">
+                  <div className="w-full bg-gray-800 h-2 rounded-full overflow-hidden cursor-pointer">
                     <div
-                      className="bg-gradient-to-r from-cyan-400 to-violet-500 h-full rounded-full transition-all duration-300"
+                      className="bg-blue-500 h-full rounded-full transition-all duration-300"
                       style={{ width: isPlaying ? "75%" : "25%" }}
                     />
                   </div>
-                  <div className="flex justify-between items-center text-[11px] text-slate-400 font-mono">
+                  <div className="flex justify-between items-center text-[11px] text-gray-400 font-mono">
                     <span>{isPlaying ? "08:15" : "01:45"}</span>
                     <button
                       onClick={() => handleMarkCompleted(activeSession.id)}
-                      className="text-cyan-400 hover:text-cyan-300 font-sans font-semibold text-xs flex items-center gap-1"
+                      className="text-blue-400 hover:text-blue-300 font-sans font-semibold text-xs flex items-center gap-1"
                     >
                       <CheckCircle2 className="w-3.5 h-3.5" /> Mark Completed
                     </button>
@@ -437,16 +436,16 @@ export default function SessionsPage() {
 
               {/* Learning Outcomes */}
               <div className="space-y-3 mb-6">
-                <h4 className="text-xs font-semibold uppercase tracking-wider text-cyan-400 flex items-center gap-1.5">
+                <h4 className="text-xs font-semibold uppercase tracking-wider text-blue-700 flex items-center gap-1.5">
                   <BookOpen className="w-3.5 h-3.5" /> What You Learn in this Session:
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   {activeSession.learningOutcomes.map((outcome, oIdx) => (
                     <div
                       key={oIdx}
-                      className="p-3 rounded-xl bg-navy-950/60 border border-slate-800/80 text-xs text-slate-300 flex items-start gap-2"
+                      className="p-3 rounded-xl bg-[#F9FAFB] border border-[#E5E7EB] text-xs text-[#4B5563] flex items-start gap-2"
                     >
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
                       <span>{outcome}</span>
                     </div>
                   ))}
@@ -454,50 +453,50 @@ export default function SessionsPage() {
               </div>
 
               {/* Chapters Timeline */}
-              <div className="mb-6 p-4 rounded-xl bg-navy-950/40 border border-slate-800/80">
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 block mb-2">
+              <div className="mb-6 p-4 rounded-xl bg-[#F9FAFB] border border-[#E5E7EB]">
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-[#6B7280] block mb-2">
                   Session Chapters & Timestamps:
                 </span>
                 <div className="space-y-1.5">
                   {activeSession.chapters.map((chap, cIdx) => (
-                    <div key={cIdx} className="flex items-center justify-between text-xs text-slate-300 py-1 border-b border-slate-900 last:border-0">
+                    <div key={cIdx} className="flex items-center justify-between text-xs text-[#4B5563] py-1 border-b border-[#E5E7EB] last:border-0">
                       <span>{chap.label}</span>
-                      <span className="font-mono text-cyan-400 text-[11px]">{chap.time}</span>
+                      <span className="font-mono text-blue-700 text-[11px]">{chap.time}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Resume Asset Tool Widget */}
-              <div className="p-5 rounded-2xl bg-gradient-to-br from-navy-950 to-violet-950/30 border border-violet-500/40 space-y-3">
+              <div className="p-5 rounded-2xl bg-[#F9FAFB] border border-[#E5E7EB] shadow-[0_1px_3px_rgba(0,0,0,0.06)] space-y-3">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h5 className="text-xs font-bold text-white flex items-center gap-1.5">
-                      <Zap className="w-3.5 h-3.5 text-violet-400" />
+                    <h5 className="text-xs font-bold text-[#111827] flex items-center gap-1.5">
+                      <Zap className="w-3.5 h-3.5 text-indigo-600" />
                       {activeSession.resumeFeatureTitle}
                     </h5>
-                    <p className="text-[11px] text-slate-400 mt-0.5">
+                    <p className="text-[11px] text-[#6B7280] mt-0.5">
                       {activeSession.resumeFeatureDescription}
                     </p>
                   </div>
 
                   <button
                     onClick={() => handleCopy(activeSession.resumeSnippet, activeSession.id)}
-                    className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-600 flex items-center gap-1.5 transition-colors shrink-0"
+                    className="px-3.5 py-1.5 rounded-lg bg-white hover:bg-gray-50 text-[#4B5563] text-xs font-semibold border border-[#E5E7EB] shadow-sm flex items-center gap-1.5 transition-colors shrink-0"
                   >
                     {copiedSnippet === activeSession.id ? (
                       <>
-                        <Check className="w-3.5 h-3.5 text-emerald-400" /> Copied!
+                        <Check className="w-3.5 h-3.5 text-emerald-600" /> Copied!
                       </>
                     ) : (
                       <>
-                        <Copy className="w-3.5 h-3.5 text-slate-400" /> Copy Snippet
+                        <Copy className="w-3.5 h-3.5 text-[#6B7280]" /> Copy Snippet
                       </>
                     )}
                   </button>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-slate-900 border border-slate-800 font-mono text-[11px] text-slate-200 whitespace-pre-wrap leading-relaxed">
+                <div className="p-3.5 rounded-xl bg-white border border-[#E5E7EB] font-mono text-[11px] text-[#111827] whitespace-pre-wrap leading-relaxed shadow-inner">
                   {activeSession.resumeSnippet}
                 </div>
               </div>
@@ -506,20 +505,20 @@ export default function SessionsPage() {
         </div>
 
         {/* Certificate of Completion Generator Section */}
-        <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-navy-900 via-navy-950 to-violet-950/70 border border-cyan-500/40 relative overflow-hidden shadow-2xl">
+        <div className="p-8 sm:p-12 rounded-3xl bg-white border border-[#E5E7EB] shadow-[0_1px_3px_rgba(0,0,0,0.08)] relative overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Left Content (Col 7) */}
             <div className="lg:col-span-7 space-y-4 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-semibold">
-                <ShieldCheck className="w-4 h-4 text-cyan-400" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold">
+                <ShieldCheck className="w-4 h-4 text-blue-600" />
                 Verified Student Credential
               </div>
 
-              <h3 className="font-serif text-2xl sm:text-4xl font-bold text-white">
+              <h3 className="font-serif text-2xl sm:text-4xl font-bold text-[#111827]">
                 Claim Your Foundations of Tech Certificate
               </h3>
 
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+              <p className="text-[#4B5563] text-sm sm:text-base leading-relaxed">
                 Add this verified achievement to your LinkedIn profile and resume to demonstrate hands-on understanding of modern software architecture, production Git workflows, and STAR interview methodology.
               </p>
 
@@ -529,43 +528,43 @@ export default function SessionsPage() {
                   value={studentName}
                   onChange={(e) => setStudentName(e.target.value)}
                   placeholder="Enter your full name for certificate"
-                  className="bg-navy-950 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-cyan-400 w-full sm:w-72"
+                  className="bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl px-4 py-3 text-xs text-[#111827] placeholder:text-[#9CA3AF] focus:outline-none focus:border-blue-500 focus:bg-white w-full sm:w-72 transition-colors"
                 />
                 <button
                   onClick={handleDownloadCertificate}
-                  className="w-full sm:w-auto px-7 py-3 rounded-xl bg-gradient-to-r from-cyan-400 to-violet-500 text-navy-950 font-bold text-xs hover:opacity-95 transition-all shadow-xl shadow-cyan-500/25 flex items-center justify-center gap-2 shrink-0"
+                  className="w-full sm:w-auto px-7 py-3 rounded-xl bg-gray-900 hover:bg-black text-white font-bold text-xs transition-all shadow-[0_1px_3px_rgba(0,0,0,0.08)] flex items-center justify-center gap-2 shrink-0"
                 >
                   <Download className="w-4 h-4" />
                   <span>Download Official PDF Certificate</span>
                 </button>
               </div>
 
-              <span className="text-[11px] text-slate-400 block pt-1">
+              <span className="text-[11px] text-[#6B7280] block pt-1">
                 Zero fees • Issued on-demand by AXIOM Engineering Academy
               </span>
             </div>
 
             {/* Right Certificate Graphic Preview (Col 5) */}
             <div className="lg:col-span-5">
-              <div className="bg-navy-950 border-2 border-cyan-400/50 rounded-2xl p-6 sm:p-8 text-center space-y-3 relative shadow-2xl">
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-cyan-400 to-violet-500 flex items-center justify-center mx-auto text-navy-950">
+              <div className="bg-[#F9FAFB] border-2 border-blue-500/30 rounded-2xl p-6 sm:p-8 text-center space-y-3 relative shadow-md">
+                <div className="w-14 h-14 rounded-full bg-blue-600 text-white flex items-center justify-center mx-auto shadow-sm">
                   <Award className="w-7 h-7" />
                 </div>
-                <span className="text-[10px] font-bold tracking-widest uppercase text-cyan-400 block">
+                <span className="text-[10px] font-bold tracking-widest uppercase text-blue-700 block">
                   Official Certificate of Completion
                 </span>
-                <h4 className="font-serif text-2xl font-bold text-white tracking-wide">
+                <h4 className="font-serif text-2xl font-bold text-[#111827] tracking-wide">
                   {studentName || "YOUR NAME"}
                 </h4>
-                <p className="text-xs text-slate-300 font-medium">
+                <p className="text-xs text-[#4B5563] font-medium">
                   Foundations of Tech & Engineering Readiness
                 </p>
-                <p className="text-[10px] text-slate-500 italic">
+                <p className="text-[10px] text-[#6B7280] italic">
                   Competencies: Git/GitHub • Full-Stack Deployments • STAR Interviewing
                 </p>
-                <div className="pt-4 border-t border-slate-800 flex items-center justify-between text-[10px] text-slate-400">
+                <div className="pt-4 border-t border-[#E5E7EB] flex items-center justify-between text-[10px] text-[#6B7280]">
                   <span>Verified Credential</span>
-                  <span className="font-mono text-cyan-400 font-semibold">AXIOM-TECH-VERIFIED</span>
+                  <span className="font-mono text-blue-700 font-semibold">AXIOM-TECH-VERIFIED</span>
                 </div>
               </div>
             </div>

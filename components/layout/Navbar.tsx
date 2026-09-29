@@ -24,7 +24,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -32,60 +32,61 @@ export default function Navbar() {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        scrolled
-          ? 'bg-navy-950/80 backdrop-blur-2xl border-b border-white/12 shadow-[0_10px_30px_rgba(0,0,0,0.45),inset_0_1px_1px_rgba(255,255,255,0.15)]'
-          : 'bg-navy-950/30 backdrop-blur-md border-b border-white/5'
+        'sticky top-0 left-0 right-0 z-50 transition-all duration-200 bg-white border-b border-[#E5E7EB]',
+        scrolled ? 'shadow-[0_1px_3px_rgba(0,0,0,0.06)]' : 'shadow-none'
       )}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-violet-500 flex items-center justify-center glow-cyan group-hover:scale-110 transition-transform">
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <div className="w-8 h-8 rounded-lg bg-gray-900 flex items-center justify-center text-white shadow-sm group-hover:bg-blue-600 transition-colors">
               <Zap className="w-4 h-4 text-white" />
             </div>
-            <span className="font-display font-bold text-xl text-white">AXIOM</span>
+            <span className="font-sans font-bold text-xl tracking-tight text-gray-900">
+              AXIOM
+            </span>
           </Link>
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => {
               const Icon = link.icon;
+              const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    'px-3 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-1.5',
+                    'px-3 py-1.5 rounded-lg text-sm font-medium transition-all flex items-center gap-1.5',
                     link.highlight
-                      ? 'text-cyan-300 bg-cyan-500/10 border border-cyan-500/30 hover:bg-cyan-500/20'
-                      : pathname === link.href
-                      ? 'text-cyan-400 bg-cyan-400/10'
-                      : 'text-white/70 hover:text-white hover:bg-white/5'
+                      ? 'text-blue-700 bg-blue-50 border border-blue-200/80 hover:bg-blue-100 font-semibold'
+                      : isActive
+                      ? 'text-blue-600 bg-blue-50/70 font-semibold'
+                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
                   )}
                 >
-                  {Icon && <Icon className="w-4 h-4 text-cyan-400" />}
+                  {Icon && <Icon className="w-3.5 h-3.5 text-blue-600" />}
                   <span>{link.label}</span>
                 </Link>
               );
             })}
           </div>
 
-          {/* CTA */}
+          {/* CTA Button */}
           <div className="hidden md:flex items-center gap-3">
             <Link
               href="/builder"
-              className="px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-400 to-violet-500 text-navy-950 text-sm font-bold hover:opacity-95 transition-all shadow-lg shadow-cyan-400/25 flex items-center gap-1.5"
+              className="px-4 py-2 rounded-lg bg-gray-900 hover:bg-gray-800 text-white text-sm font-semibold transition-all shadow-sm hover:shadow flex items-center gap-1.5"
             >
-              <Wand2 className="w-4 h-4" />
+              <Wand2 className="w-3.5 h-3.5 text-blue-400" />
               <span>Build My Resume</span>
             </Link>
           </div>
 
           {/* Mobile toggle */}
           <button
-            className="md:hidden p-2 rounded-lg text-white/70 hover:text-white"
+            className="md:hidden p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
@@ -100,34 +101,35 @@ export default function Navbar() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden border-t border-white/10 py-4 space-y-1"
+              className="md:hidden border-t border-[#E5E7EB] py-3 space-y-1 bg-white"
             >
               {navLinks.map((link) => {
                 const Icon = link.icon;
+                const isActive = pathname === link.href;
                 return (
                   <Link
                     key={link.href}
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
                     className={cn(
-                      'flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all',
-                      pathname === link.href
-                        ? 'text-cyan-400 bg-cyan-400/10'
-                        : 'text-white/70 hover:text-white'
+                      'flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all',
+                      isActive
+                        ? 'text-blue-600 bg-blue-50 font-semibold'
+                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                     )}
                   >
-                    {Icon && <Icon className="w-4 h-4 text-cyan-400" />}
+                    {Icon && <Icon className="w-4 h-4 text-blue-600" />}
                     <span>{link.label}</span>
                   </Link>
                 );
               })}
-              <div className="pt-2 px-4">
+              <div className="pt-2 px-3">
                 <Link
                   href="/builder"
                   onClick={() => setMobileOpen(false)}
-                  className="flex items-center justify-center gap-2 w-full text-center px-4 py-2.5 rounded-lg bg-gradient-to-r from-cyan-400 to-violet-500 text-navy-950 text-sm font-bold shadow-lg shadow-cyan-500/20"
+                  className="flex items-center justify-center gap-2 w-full text-center px-4 py-2.5 rounded-lg bg-gray-900 hover:bg-gray-800 text-white text-sm font-semibold shadow-sm"
                 >
-                  <Wand2 className="w-4 h-4" />
+                  <Wand2 className="w-4 h-4 text-blue-400" />
                   <span>Build My Resume</span>
                 </Link>
               </div>

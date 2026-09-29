@@ -7,86 +7,77 @@ import {
   Sparkles,
   ArrowRight,
   CheckCircle2,
-  Code2,
-  FileCheck,
-  Zap,
-  Layers,
 } from "lucide-react";
-import { GlassCard } from "@/components/ui/GlassCard";
 
 export default function BuildFromScratchSection() {
   return (
-    <section className="py-20 relative overflow-hidden" id="build-scratch">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-cyan-950/40 via-navy-900/80 to-violet-950/50 border border-cyan-500/40 shadow-2xl relative overflow-hidden">
-          {/* Subtle background glow */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl pointer-events-none" />
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+    <section className="py-24 bg-[#F9FAFB] border-y border-[#E5E7EB] relative overflow-hidden" id="build-scratch">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="p-8 sm:p-12 rounded-3xl bg-white border border-[#E5E7EB] shadow-[0_1px_3px_rgba(0,0,0,0.06)] relative overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
             {/* Left Content (Col 7) */}
             <div className="lg:col-span-7 space-y-4 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-semibold">
-                <Wand2 className="w-4 h-4 text-cyan-400" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold">
+                <Wand2 className="w-3.5 h-3.5 text-blue-600" />
                 Zero Resume? Build from Scratch with AI
               </div>
 
-              <h2 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
+              <h2 className="font-sans text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#111827] leading-tight">
                 Don't Have a Resume Yet? <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-violet-400">
+                <span className="text-gradient-cyan">
                   Build One in 5 Simple Steps.
                 </span>
               </h2>
 
-              <p className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl">
-                Designed for students and new creators. AXIOM asks you targeted questions about your coursework, student projects, and tools—then formats everything into a recruiter-approved, ATS-compliant resume with quantified XYZ bullets.
+              <p className="text-[#4B5563] text-base sm:text-lg leading-relaxed max-w-2xl">
+                Designed specifically for students and beginners. AXIOM asks you targeted questions about your coursework, student projects, and tools—then formats everything into an ATS-compliant resume with quantified Google XYZ bullets.
               </p>
 
               {/* 4 Feature Pills */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-left">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2 text-left">
                 <div className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-                  <span className="text-xs text-slate-300">
-                    <strong className="text-white">Guided Q&A Wizard:</strong> No blank page anxiety. Simple guided prompts.
+                  <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+                  <span className="text-xs text-[#4B5563]">
+                    <strong className="text-[#111827] font-semibold">Guided Q&A Wizard:</strong> No blank page anxiety. Simple structured prompts.
                   </span>
                 </div>
 
                 <div className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-violet-400 shrink-0 mt-0.5" />
-                  <span className="text-xs text-slate-300">
-                    <strong className="text-white">XYZ Formula AI:</strong> Auto-transforms basic duties into metric bullets.
+                  <CheckCircle2 className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
+                  <span className="text-xs text-[#4B5563]">
+                    <strong className="text-[#111827] font-semibold">XYZ Formula AI:</strong> Auto-transforms basic duties into metric-driven bullets.
                   </span>
                 </div>
 
                 <div className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                  <span className="text-xs text-slate-300">
-                    <strong className="text-white">ATS Single-Column:</strong> Clean layout guaranteed to parse on any hiring system.
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                  <span className="text-xs text-[#4B5563]">
+                    <strong className="text-[#111827] font-semibold">ATS Single-Column:</strong> Clean layout guaranteed to parse on any hiring system.
                   </span>
                 </div>
 
                 <div className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-                  <span className="text-xs text-slate-300">
-                    <strong className="text-white">1-Click Diagnostic:</strong> Direct handoff to the 100-point AI Scorer.
+                  <CheckCircle2 className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+                  <span className="text-xs text-[#4B5563]">
+                    <strong className="text-[#111827] font-semibold">1-Click Diagnostic:</strong> Direct handoff to the 100-point AI Scorer.
                   </span>
                 </div>
               </div>
 
               {/* Action Buttons */}
-              <div className="pt-4 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+              <div className="pt-4 flex flex-col sm:flex-row items-center gap-3.5 justify-center lg:justify-start">
                 <Link
                   href="/builder"
-                  className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-400 to-violet-500 text-navy-950 font-bold text-sm hover:opacity-95 transition-all shadow-xl shadow-cyan-500/25 flex items-center justify-center gap-2"
+                  className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-gray-900 hover:bg-black text-white font-semibold text-sm transition-all shadow-sm hover:shadow flex items-center justify-center gap-2"
                 >
-                  <Wand2 className="w-4 h-4" />
+                  <Wand2 className="w-4 h-4 text-blue-400" />
                   <span>Start AI Resume Builder (Free)</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
 
                 <Link
                   href="/resume"
-                  className="w-full sm:w-auto px-6 py-4 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 font-semibold text-sm border border-slate-700 transition-all text-center"
+                  className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-white hover:bg-gray-50 text-gray-800 font-semibold text-sm border border-gray-300 transition-all text-center shadow-sm"
                 >
                   Already have one? Rate It Instead
                 </Link>
@@ -95,39 +86,39 @@ export default function BuildFromScratchSection() {
 
             {/* Right Card Graphic Preview (Col 5) */}
             <div className="lg:col-span-5">
-              <div className="relative bg-navy-950/90 border border-slate-700/80 rounded-2xl p-6 shadow-2xl backdrop-blur-md space-y-4">
-                <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+              <div className="relative bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl p-6 shadow-sm space-y-3.5">
+                <div className="flex items-center justify-between border-b border-[#E5E7EB] pb-3">
                   <div className="flex items-center gap-2">
-                    <span className="w-3 h-3 rounded-full bg-rose-500/80" />
-                    <span className="w-3 h-3 rounded-full bg-amber-500/80" />
-                    <span className="w-3 h-3 rounded-full bg-emerald-500/80" />
+                    <span className="w-3 h-3 rounded-full bg-rose-400" />
+                    <span className="w-3 h-3 rounded-full bg-amber-400" />
+                    <span className="w-3 h-3 rounded-full bg-emerald-400" />
                   </div>
-                  <span className="text-[11px] text-cyan-400 font-mono">AXIOM Builder Studio</span>
+                  <span className="text-xs text-blue-600 font-mono font-medium">AXIOM Builder Studio</span>
                 </div>
 
                 <div className="space-y-2.5">
-                  <div className="p-3 rounded-lg bg-navy-900/80 border border-slate-800 text-xs">
-                    <span className="text-[10px] text-slate-500 uppercase tracking-wider block">Question 1</span>
-                    <p className="text-slate-200 font-medium">"What technical project are you proudest of?"</p>
+                  <div className="p-3.5 rounded-xl bg-white border border-[#E5E7EB] text-xs shadow-sm">
+                    <span className="text-[10px] text-[#6B7280] uppercase tracking-wider block font-semibold">Question 1</span>
+                    <p className="text-[#111827] font-medium mt-0.5">"What technical project are you proudest of?"</p>
                   </div>
 
-                  <div className="p-3 rounded-lg bg-violet-950/30 border border-violet-500/30 text-xs">
-                    <span className="text-[10px] text-violet-400 uppercase tracking-wider flex items-center gap-1 font-semibold">
-                      <Sparkles className="w-3 h-3" /> AI Enhancement (XYZ Formula)
+                  <div className="p-3.5 rounded-xl bg-indigo-50/70 border border-indigo-200/80 text-xs shadow-sm">
+                    <span className="text-[10px] text-indigo-700 uppercase tracking-wider flex items-center gap-1 font-bold">
+                      <Sparkles className="w-3 h-3" /> AI Enhancement (Google XYZ Formula)
                     </span>
-                    <p className="text-white italic mt-1 text-[11px]">
+                    <p className="text-indigo-950 italic mt-1 text-[11px] leading-relaxed">
                       "Architected web telemetry dashboard with WebSocket streaming, cutting page load times by 38% for 1,200 active peers."
                     </p>
                   </div>
 
-                  <div className="p-3 rounded-lg bg-emerald-950/30 border border-emerald-500/30 text-xs flex items-center justify-between">
-                    <span className="text-[11px] text-emerald-300 font-semibold">ATS Compatibility Score:</span>
-                    <span className="text-sm font-bold text-emerald-400">100% Ready</span>
+                  <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-xs flex items-center justify-between shadow-sm">
+                    <span className="text-[11px] text-emerald-800 font-semibold">ATS Compatibility Score:</span>
+                    <span className="text-sm font-bold text-emerald-700">100% Ready</span>
                   </div>
                 </div>
 
-                <div className="pt-2 text-center">
-                  <span className="text-[11px] text-slate-400">
+                <div className="pt-1 text-center">
+                  <span className="text-[11px] text-[#6B7280]">
                     Outputs high-resolution PDF + editable text in under 5 minutes
                   </span>
                 </div>

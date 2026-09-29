@@ -36,9 +36,9 @@ const cards = [
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
-      <div className="glass rounded-lg px-3 py-2 border border-cyan-400/30">
-        <p className="text-xs text-white/60">{label}</p>
-        <p className="text-cyan-400 font-bold">{payload[0].value}/100</p>
+      <div className="bg-white rounded-lg px-3 py-2 border border-[#E5E7EB] shadow-md">
+        <p className="text-xs text-[#6B7280]">{label}</p>
+        <p className="text-indigo-600 font-bold">{payload[0].value}/100</p>
       </div>
     );
   }
@@ -47,18 +47,23 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 
 export default function ProgressSection() {
   return (
-    <section className="section-padding" aria-labelledby="progress-heading">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-24 bg-[#F9FAFB] border-y border-[#E5E7EB]" aria-labelledby="progress-heading">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <span className="text-violet-400 text-sm font-semibold tracking-widest uppercase">Guidance & Progress</span>
-          <h2 id="progress-heading" className="font-display text-4xl sm:text-5xl font-bold text-white mt-3 mb-4">
+          <span className="text-indigo-700 text-xs font-semibold tracking-widest uppercase px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200 inline-block mb-3">
+            Guidance & Progress
+          </span>
+          <h2 id="progress-heading" className="font-display text-4xl sm:text-5xl font-bold text-[#111827] mt-1 mb-4">
             Watch yourself improve
           </h2>
+          <p className="text-[#4B5563] text-base sm:text-lg max-w-2xl mx-auto">
+            Continuously evaluate performance across iterative attempts and monitor your progression toward top-tier candidate benchmarks.
+          </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-8 items-start">
@@ -67,12 +72,12 @@ export default function ProgressSection() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="glass rounded-2xl p-6"
+            className="bg-white border border-[#E5E7EB] rounded-2xl p-6 shadow-[0_1px_3px_rgba(0,0,0,0.06)]"
           >
             <div className="flex items-center justify-between mb-6">
-              <h3 className="font-display font-bold text-white text-lg">Score Over Time</h3>
-              <div className="flex items-center gap-2 text-green-400 text-sm font-semibold">
-                <span>↑ +31 points</span>
+              <h3 className="font-display font-bold text-[#111827] text-lg">Score Over Time</h3>
+              <div className="flex items-center gap-1.5 text-emerald-700 text-xs font-semibold bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                <span>↑ +31 points gain</span>
               </div>
             </div>
             <div className="h-56">
@@ -80,20 +85,20 @@ export default function ProgressSection() {
                 <AreaChart data={data} margin={{ top: 5, right: 10, bottom: 5, left: -20 }}>
                   <defs>
                     <linearGradient id="scoreGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#22D3EE" stopOpacity={0.3} />
-                      <stop offset="95%" stopColor="#22D3EE" stopOpacity={0} />
+                      <stop offset="5%" stopColor="#4F46E5" stopOpacity={0.2} />
+                      <stop offset="95%" stopColor="#4F46E5" stopOpacity={0} />
                     </linearGradient>
                   </defs>
                   <XAxis
                     dataKey="attempt"
-                    tick={{ fill: 'rgba(255,255,255,0.4)', fontSize: 11 }}
+                    tick={{ fill: '#6B7280', fontSize: 11 }}
                     axisLine={false}
                     tickLine={false}
                     tickFormatter={(v) => v.replace('Attempt ', '#')}
                   />
                   <YAxis
                     domain={[40, 100]}
-                    tick={{ fill: 'rgba(255,255,255,0.4)', fontSize: 11 }}
+                    tick={{ fill: '#6B7280', fontSize: 11 }}
                     axisLine={false}
                     tickLine={false}
                   />
@@ -101,11 +106,11 @@ export default function ProgressSection() {
                   <Area
                     type="monotone"
                     dataKey="score"
-                    stroke="#22D3EE"
+                    stroke="#4F46E5"
                     strokeWidth={3}
                     fill="url(#scoreGrad)"
-                    dot={{ fill: '#22D3EE', r: 5, strokeWidth: 0 }}
-                    activeDot={{ r: 7, fill: '#22D3EE', stroke: '#0B0F2E', strokeWidth: 2 }}
+                    dot={{ fill: '#4F46E5', r: 5, strokeWidth: 0 }}
+                    activeDot={{ r: 7, fill: '#4F46E5', stroke: '#FFFFFF', strokeWidth: 2 }}
                   />
                 </AreaChart>
               </ResponsiveContainer>
@@ -115,12 +120,12 @@ export default function ProgressSection() {
           {/* Cards */}
           <div className="space-y-4">
             {cards.map((card) => (
-              <GlassCard key={card.title} delay={card.delay} hover={false}>
+              <GlassCard key={card.title} delay={card.delay} hover={false} className="bg-white border-[#E5E7EB] shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
                 <div className="flex items-start gap-4">
                   <span className="text-3xl">{card.icon}</span>
                   <div>
-                    <h4 className="font-semibold text-white mb-1">{card.title}</h4>
-                    <p className="text-white/60 text-sm">{card.desc}</p>
+                    <h4 className="font-semibold text-[#111827] mb-1">{card.title}</h4>
+                    <p className="text-[#4B5563] text-sm">{card.desc}</p>
                   </div>
                 </div>
               </GlassCard>

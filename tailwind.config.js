@@ -2,7 +2,6 @@ const colors = require('tailwindcss/colors');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: 'class',
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -11,22 +10,28 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // Fallback mapping for clean light theme
         navy: {
-          950: '#06091E',
-          900: '#0B0F2E',
-          800: '#0D1238',
-          700: '#101642',
-          600: '#1B1464',
+          950: '#FFFFFF',
+          900: '#F9FAFB',
+          800: '#F3F4F6',
+          700: '#E5E7EB',
+          600: '#D1D5DB',
+        },
+        surface: {
+          DEFAULT: '#FFFFFF',
+          alt: '#F9FAFB',
+          subtle: '#F3F4F6',
         },
         cyan: {
           ...colors.cyan,
-          DEFAULT: '#22D3EE',
-          glow: 'rgba(34,211,238,0.3)',
+          DEFAULT: '#0284C7',
+          glow: 'rgba(2, 132, 199, 0.15)',
         },
         violet: {
           ...colors.violet,
-          DEFAULT: '#7C5CFF',
-          glow: 'rgba(124,92,255,0.3)',
+          DEFAULT: '#4F46E5',
+          glow: 'rgba(79, 70, 229, 0.15)',
         },
       },
       fontFamily: {
@@ -34,7 +39,7 @@ module.exports = {
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
       backgroundImage: {
-        'axiom-gradient': 'linear-gradient(135deg, #0B0F2E 0%, #1B1464 100%)',
+        'axiom-gradient': 'linear-gradient(135deg, #F9FAFB 0%, #FFFFFF 100%)',
       },
       animation: {
         'spin-slow': 'spin 8s linear infinite',
@@ -43,16 +48,13 @@ module.exports = {
       },
       keyframes: {
         'pulse-glow': {
-          '0%, 100%': { boxShadow: '0 0 20px rgba(34,211,238,0.3)' },
-          '50%': { boxShadow: '0 0 40px rgba(34,211,238,0.6)' },
+          '0%, 100%': { boxShadow: '0 0 15px rgba(2, 132, 199, 0.15)' },
+          '50%': { boxShadow: '0 0 25px rgba(2, 132, 199, 0.3)' },
         },
         'float': {
           '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-10px)' },
+          '50%': { transform: 'translateY(-6px)' },
         },
-      },
-      backdropBlur: {
-        xs: '2px',
       },
     },
   },

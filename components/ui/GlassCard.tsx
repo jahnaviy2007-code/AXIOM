@@ -24,35 +24,33 @@ export function GlassCard({
   onClick,
 }: GlassCardProps) {
   const variantClass = {
-    default: 'glass',
-    panel: 'glass-panel',
-    specular: 'glass glass-specular',
+    default: 'bg-white border border-[#E5E7EB] shadow-[0_1px_3px_rgba(0,0,0,0.06)]',
+    panel: 'bg-[#F9FAFB] border border-[#E5E7EB] shadow-[0_1px_2px_rgba(0,0,0,0.04)]',
+    specular: 'bg-white border border-[#E5E7EB] shadow-[0_2px_4px_rgba(0,0,0,0.05)]',
   }[variant];
 
   const glowClass = {
-    cyan: 'glow-cyan border-cyan-500/40 shadow-cyan-500/20',
-    violet: 'glow-violet border-violet-500/40 shadow-violet-500/20',
-    amber: 'border-amber-500/40 shadow-[0_0_25px_rgba(245,158,11,0.25)]',
-    none: '',
+    cyan: 'hover:border-sky-300 hover:shadow-[0_8px_20px_rgba(2,132,199,0.08)]',
+    violet: 'hover:border-indigo-300 hover:shadow-[0_8px_20px_rgba(79,70,229,0.08)]',
+    amber: 'hover:border-amber-300 hover:shadow-[0_8px_20px_rgba(217,119,6,0.08)]',
+    none: 'hover:border-gray-300 hover:shadow-[0_10px_25px_-5px_rgba(0,0,0,0.06)]',
   }[glow];
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 15 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.5, delay }}
-      whileHover={hover ? { y: -4, transition: { duration: 0.2 } } : undefined}
+      transition={{ duration: 0.4, delay }}
+      whileHover={hover ? { y: -3, transition: { duration: 0.2 } } : undefined}
       onClick={onClick}
       className={cn(
+        'rounded-2xl p-6 relative transition-all duration-200',
         variantClass,
-        'p-6 relative',
-        glowClass,
+        hover && glowClass,
         className
       )}
     >
-      {/* Specular Top Border Sheen */}
-      <div className="absolute top-0 left-4 right-4 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
       {children}
     </motion.div>
   );
@@ -74,8 +72,8 @@ export function IconTile({ children, className, size = 'md' }: IconTileProps) {
     <div
       className={cn(
         sizes[size],
-        'rounded-xl flex items-center justify-center backdrop-blur-md',
-        'bg-violet-500/20 border border-violet-400/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]',
+        'rounded-xl flex items-center justify-center',
+        'bg-indigo-50 border border-indigo-100 text-indigo-600 shadow-sm',
         className
       )}
     >
