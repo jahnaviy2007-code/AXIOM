@@ -23,10 +23,17 @@ import {
   HelpCircle,
   FileCheck,
   Zap,
+  RotateCcw,
 } from "lucide-react";
 import Footer from "@/components/landing/Footer";
 import Starfield from "@/components/landing/Starfield";
 import { GlassCard } from "@/components/ui/GlassCard";
+
+interface Chapter {
+  time: string;
+  seconds: number;
+  label: string;
+}
 
 interface Session {
   id: number;
@@ -35,9 +42,10 @@ interface Session {
   speaker: string;
   duration: string;
   level: string;
+  youtubeId: string;
   description: string;
   learningOutcomes: string[];
-  chapters: { time: string; label: string }[];
+  chapters: Chapter[];
   resumeFeatureTitle: string;
   resumeFeatureDescription: string;
   resumeSnippet: string;
@@ -51,6 +59,7 @@ const SESSIONS: Session[] = [
     speaker: "David Kim, Principal Engineer at Google & Student Mentor",
     duration: "12:40 min",
     level: "Beginner Friendly",
+    youtubeId: "zOjov-2OZ0E",
     description:
       "A complete guide for students stepping into tech. We demystify the difference between Frontend, Backend, Cloud, and AI roles, explain how software teams build features in 2-week sprints, and teach you how to pick your first high-demand specialization.",
     learningOutcomes: [
@@ -60,11 +69,11 @@ const SESSIONS: Session[] = [
       "What recruiters look for when an applicant has zero prior company experience."
     ],
     chapters: [
-      { time: "00:00", label: "Welcome & Busting the 'CS Degree Only' Myth" },
-      { time: "03:15", label: "Breaking Down Tech Disciplines (Frontend vs Backend vs DevOps)" },
-      { time: "06:40", label: "How Real Engineering Teams Ship Code (Sprints & PRs)" },
-      { time: "09:30", label: "The 3 Things Recruiters Prioritize for Entry-Level Hires" },
-      { time: "11:50", label: "How to Frame Your Student Journey on Your Resume" }
+      { time: "00:00", seconds: 0, label: "Welcome & Busting the 'CS Degree Only' Myth" },
+      { time: "03:15", seconds: 195, label: "Breaking Down Tech Disciplines (Frontend vs Backend vs DevOps)" },
+      { time: "06:40", seconds: 400, label: "How Real Engineering Teams Ship Code (Sprints & PRs)" },
+      { time: "09:30", seconds: 570, label: "The 3 Things Recruiters Prioritize for Entry-Level Hires" },
+      { time: "11:50", seconds: 710, label: "How to Frame Your Student Journey on Your Resume" }
     ],
     resumeFeatureTitle: "Headline & Career Objective Generator",
     resumeFeatureDescription: "Use this clean, recruiter-approved header summary on your resume:",
@@ -77,6 +86,7 @@ const SESSIONS: Session[] = [
     speaker: "Maya Lin, Senior Staff Engineer at GitHub",
     duration: "15:10 min",
     level: "Hands-on Practical",
+    youtubeId: "mAFoROnOfHs",
     description:
       "Tutorial projects stored on your laptop don't get you hired. Learn professional Git workflows, how to structure an impressive GitHub README with architectural diagrams, and how to deploy your app live on Vercel or Render with zero hosting costs.",
     learningOutcomes: [
@@ -86,11 +96,11 @@ const SESSIONS: Session[] = [
       "Format clickable project links that pass ATS scanners with 100% reliability."
     ],
     chapters: [
-      { time: "00:00", label: "Why 'Green Squares' & GitHub Commits Matter" },
-      { time: "03:30", label: "Writing Clean Commits & Semantic Branching" },
-      { time: "07:15", label: "The Anatomy of a Top 1% Project README" },
-      { time: "11:00", label: "Live 1-Click Deployment to Vercel & Render" },
-      { time: "13:45", label: "Adding Live Project Proof to Your Resume" }
+      { time: "00:00", seconds: 0, label: "Why 'Green Squares' & GitHub Commits Matter" },
+      { time: "03:30", seconds: 210, label: "Writing Clean Commits & Semantic Branching" },
+      { time: "07:15", seconds: 435, label: "The Anatomy of a Top 1% Project README" },
+      { time: "11:00", seconds: 660, label: "Live 1-Click Deployment to Vercel & Render" },
+      { time: "13:45", seconds: 825, label: "Adding Live Project Proof to Your Resume" }
     ],
     resumeFeatureTitle: "High-Signal Project Proof Template",
     resumeFeatureDescription: "Copy this exact project entry format onto your resume:",
@@ -103,6 +113,7 @@ const SESSIONS: Session[] = [
     speaker: "Kevin Patel, Engineering Hiring Lead at Netflix",
     duration: "14:25 min",
     level: "Interview Preparation",
+    youtubeId: "PuZw3PEECIU",
     description:
       "First-time interviews are intimidating. Learn the mental model of engineering interviewers, how to think out loud when you don't know the exact solution, and how to turn classroom projects into compelling STAR method behavioral answers.",
     learningOutcomes: [
@@ -112,11 +123,11 @@ const SESSIONS: Session[] = [
       "Key questions every student should ask the interviewer at the end of the session."
     ],
     chapters: [
-      { time: "00:00", label: "What Interviewers Actually Score Behind Closed Doors" },
-      { time: "02:50", label: "The STAR Framework Explained with Student Project Examples" },
-      { time: "06:10", label: "Handling Tough Coding Questions When You Freeze" },
-      { time: "09:40", label: "Turning Classroom Group Projects into Leadership Stories" },
-      { time: "12:30", label: "Winning the Final 5 Minutes: Reverse-Interviewing Your Manager" }
+      { time: "00:00", seconds: 0, label: "What Interviewers Actually Score Behind Closed Doors" },
+      { time: "02:50", seconds: 170, label: "The STAR Framework Explained with Student Project Examples" },
+      { time: "06:10", seconds: 370, label: "Handling Tough Coding Questions When You Freeze" },
+      { time: "09:40", seconds: 580, label: "Turning Classroom Group Projects into Leadership Stories" },
+      { time: "12:30", seconds: 750, label: "Winning the Final 5 Minutes: Reverse-Interviewing Your Manager" }
     ],
     resumeFeatureTitle: "STAR Behavioral Formulation Cheat Sheet",
     resumeFeatureDescription: "Format your leadership and problem-solving bullets using this template:",
@@ -127,6 +138,7 @@ const SESSIONS: Session[] = [
 export default function SessionsPage() {
   const [activeSessionIndex, setActiveSessionIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [chapterStartSeconds, setChapterStartSeconds] = useState(0);
   const [completedSessions, setCompletedSessions] = useState<number[]>([1]);
   const [copiedSnippet, setCopiedSnippet] = useState<number | null>(null);
 
@@ -135,8 +147,25 @@ export default function SessionsPage() {
 
   const activeSession = SESSIONS[activeSessionIndex];
 
+  const handleSelectSession = (idx: number) => {
+    setActiveSessionIndex(idx);
+    setChapterStartSeconds(0);
+    setIsPlaying(true);
+    if (!completedSessions.includes(SESSIONS[idx].id)) {
+      setCompletedSessions((prev) => [...prev, SESSIONS[idx].id]);
+    }
+  };
+
   const handleTogglePlay = () => {
-    setIsPlaying(!isPlaying);
+    setIsPlaying(true);
+    if (!completedSessions.includes(activeSession.id)) {
+      setCompletedSessions((prev) => [...prev, activeSession.id]);
+    }
+  };
+
+  const handleJumpToChapter = (seconds: number) => {
+    setChapterStartSeconds(seconds);
+    setIsPlaying(true);
     if (!completedSessions.includes(activeSession.id)) {
       setCompletedSessions((prev) => [...prev, activeSession.id]);
     }
@@ -145,6 +174,8 @@ export default function SessionsPage() {
   const handleMarkCompleted = (id: number) => {
     if (!completedSessions.includes(id)) {
       setCompletedSessions((prev) => [...prev, id]);
+    } else {
+      setCompletedSessions((prev) => prev.filter((item) => item !== id));
     }
   };
 
@@ -305,7 +336,7 @@ export default function SessionsPage() {
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="w-32 bg-gray-200 h-2 rounded-full overflow-hidden">
+              <div className="w-32 bg-gray-200 h-2.5 rounded-full overflow-hidden">
                 <div
                   className="bg-blue-600 h-full rounded-full transition-all duration-500"
                   style={{ width: `${(completedSessions.length / SESSIONS.length) * 100}%` }}
@@ -332,13 +363,10 @@ export default function SessionsPage() {
               return (
                 <div
                   key={session.id}
-                  onClick={() => {
-                    setActiveSessionIndex(idx);
-                    setIsPlaying(false);
-                  }}
+                  onClick={() => handleSelectSession(idx)}
                   className={`p-5 rounded-2xl cursor-pointer transition-all border ${
                     isSelected
-                      ? "bg-blue-50/70 border-blue-600 shadow-sm ring-1 ring-blue-500/20"
+                      ? "bg-blue-50/70 border-blue-600 shadow-sm ring-1 ring-blue-500/20 scale-[1.01]"
                       : "bg-white border-[#E5E7EB] hover:border-gray-300 hover:shadow-sm"
                   }`}
                 >
@@ -356,9 +384,14 @@ export default function SessionsPage() {
                   </div>
 
                   <p className="text-xs text-[#4B5563] font-medium mb-1.5">{session.subtitle}</p>
-                  <span className="text-[10px] text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md inline-block font-medium">
-                    {session.speaker}
-                  </span>
+                  <div className="flex items-center justify-between mt-2">
+                    <span className="text-[10px] text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md inline-block font-medium">
+                      {session.speaker}
+                    </span>
+                    <span className="text-[10px] font-bold text-blue-600 flex items-center gap-1 hover:underline">
+                      <Play className="w-2.5 h-2.5 fill-blue-600" /> Watch
+                    </span>
+                  </div>
                 </div>
               );
             })}
@@ -383,55 +416,107 @@ export default function SessionsPage() {
           {/* Right Column: Active Video Player & Resume Feature Widget (Col 8) */}
           <div className="lg:col-span-8 space-y-6">
             <GlassCard className="p-6 sm:p-8 bg-white border-[#E5E7EB] shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
-              {/* Interactive Video Player Canvas */}
-              <div className="relative w-full h-[300px] sm:h-[380px] bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 flex flex-col justify-between p-6 mb-6 group shadow-md">
-                {/* Background video simulation art */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-gray-950 via-gray-900 to-indigo-950/80 opacity-95" />
-
-                {/* Top Info Bar */}
-                <div className="relative z-10 flex items-center justify-between">
-                  <span className="text-xs font-semibold px-3 py-1 rounded-full bg-gray-950/90 border border-gray-700 text-blue-300 flex items-center gap-1.5">
-                    <Video className="w-3.5 h-3.5 text-blue-400" />
-                    Session {activeSession.id} • {activeSession.duration}
-                  </span>
-                  <span className="text-xs text-gray-300 bg-gray-950/90 px-3 py-1 rounded-lg border border-gray-800">
-                    {activeSession.level}
-                  </span>
-                </div>
-
-                {/* Center Play Button & Title */}
-                <div className="relative z-10 text-center my-auto">
-                  <button
-                    onClick={handleTogglePlay}
-                    className="w-20 h-20 rounded-full bg-blue-500 hover:bg-blue-400 text-white flex items-center justify-center mx-auto mb-3 shadow-xl hover:scale-105 transition-all"
-                  >
-                    {isPlaying ? <Pause className="w-8 h-8" /> : <Play className="w-8 h-8 ml-1" />}
-                  </button>
-                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-white max-w-lg mx-auto leading-snug">
-                    {activeSession.title}
-                  </h3>
-                  <p className="text-xs text-gray-300 mt-1">Instructor: {activeSession.speaker}</p>
-                </div>
-
-                {/* Bottom Scrub Controls */}
-                <div className="relative z-10 space-y-2">
-                  <div className="w-full bg-gray-800 h-2 rounded-full overflow-hidden cursor-pointer">
-                    <div
-                      className="bg-blue-500 h-full rounded-full transition-all duration-300"
-                      style={{ width: isPlaying ? "75%" : "25%" }}
+              {/* Working Interactive Video Player Frame */}
+              <div className="relative w-full aspect-video bg-gray-950 rounded-2xl overflow-hidden border border-[#E5E7EB] shadow-lg mb-4">
+                {isPlaying ? (
+                  <div className="relative w-full h-full">
+                    <iframe
+                      key={`${activeSession.id}-${chapterStartSeconds}`}
+                      src={`https://www.youtube-nocookie.com/embed/${activeSession.youtubeId}?autoplay=1&start=${chapterStartSeconds}&rel=0&modestbranding=1&playsinline=1`}
+                      title={activeSession.title}
+                      className="w-full h-full border-0 rounded-2xl"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
                     />
                   </div>
-                  <div className="flex justify-between items-center text-[11px] text-gray-400 font-mono">
-                    <span>{isPlaying ? "08:15" : "01:45"}</span>
-                    <button
-                      onClick={() => handleMarkCompleted(activeSession.id)}
-                      className="text-blue-400 hover:text-blue-300 font-sans font-semibold text-xs flex items-center gap-1"
-                    >
-                      <CheckCircle2 className="w-3.5 h-3.5" /> Mark Completed
-                    </button>
-                    <span>{activeSession.duration}</span>
+                ) : (
+                  <div
+                    onClick={handleTogglePlay}
+                    className="relative w-full h-full cursor-pointer group flex flex-col justify-between p-6 overflow-hidden"
+                  >
+                    {/* Video Poster Thumbnail */}
+                    <img
+                      src={`https://img.youtube.com/vi/${activeSession.youtubeId}/hqdefault.jpg`}
+                      alt={activeSession.title}
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-75"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/60 to-gray-950/40" />
+
+                    {/* Top Info Bar */}
+                    <div className="relative z-10 flex items-center justify-between">
+                      <span className="text-xs font-semibold px-3 py-1 rounded-full bg-gray-900/90 border border-gray-700 text-blue-300 flex items-center gap-1.5 backdrop-blur-md">
+                        <Video className="w-3.5 h-3.5 text-blue-400" />
+                        Session {activeSession.id} • {activeSession.duration}
+                      </span>
+                      <span className="text-xs text-gray-200 bg-gray-900/90 px-3 py-1 rounded-lg border border-gray-700 backdrop-blur-md font-mono">
+                        {activeSession.level}
+                      </span>
+                    </div>
+
+                    {/* Center Play Button & Title */}
+                    <div className="relative z-10 text-center my-auto">
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleTogglePlay();
+                        }}
+                        className="w-20 h-20 rounded-full bg-blue-600 hover:bg-blue-500 text-white flex items-center justify-center mx-auto mb-3 shadow-2xl hover:scale-110 transition-all ring-4 ring-white/20 group-hover:ring-blue-400/40"
+                      >
+                        <Play className="w-8 h-8 ml-1 fill-white" />
+                      </button>
+                      <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-blue-300 bg-blue-950/80 px-3 py-1 rounded-full border border-blue-500/30 mb-2">
+                        Click to Play Full Video
+                      </span>
+                      <h3 className="font-serif text-xl sm:text-2xl font-bold text-white max-w-xl mx-auto leading-snug drop-shadow-md">
+                        {activeSession.title}
+                      </h3>
+                      <p className="text-xs text-gray-300 mt-1 font-medium">Instructor: {activeSession.speaker}</p>
+                    </div>
+
+                    {/* Bottom Status Bar */}
+                    <div className="relative z-10 flex justify-between items-center text-xs text-gray-300 pt-2 border-t border-white/10 font-mono">
+                      <span className="flex items-center gap-1.5 text-blue-300">
+                        <Sparkles className="w-3.5 h-3.5 text-blue-400" /> Interactive Curated Stream
+                      </span>
+                      <span>Duration: {activeSession.duration}</span>
+                    </div>
                   </div>
+                )}
+              </div>
+
+              {/* Player Quick Controls Bar */}
+              <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-xl bg-[#F9FAFB] border border-[#E5E7EB] mb-6">
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={handleTogglePlay}
+                    className="px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold flex items-center gap-1.5 transition-colors shadow-sm"
+                  >
+                    <Play className="w-3.5 h-3.5 fill-white" />
+                    <span>{isPlaying ? "Restart Video" : "Play Full Video"}</span>
+                  </button>
+                  {isPlaying && (
+                    <button
+                      onClick={() => setIsPlaying(false)}
+                      className="px-3 py-1.5 rounded-lg bg-white hover:bg-gray-100 text-xs text-[#4B5563] font-medium border border-[#E5E7EB] transition-colors"
+                    >
+                      Close Player View
+                    </button>
+                  )}
                 </div>
+
+                <button
+                  onClick={() => handleMarkCompleted(activeSession.id)}
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all ${
+                    completedSessions.includes(activeSession.id)
+                      ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
+                      : "bg-white hover:bg-gray-50 text-[#111827] border border-[#E5E7EB] shadow-sm"
+                  }`}
+                >
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <span>
+                    {completedSessions.includes(activeSession.id) ? "Session Completed ✓" : "Mark as Completed"}
+                  </span>
+                </button>
               </div>
 
               {/* Learning Outcomes */}
@@ -452,17 +537,31 @@ export default function SessionsPage() {
                 </div>
               </div>
 
-              {/* Chapters Timeline */}
+              {/* Chapters Timeline with Clickable Jump-to-Timestamp */}
               <div className="mb-6 p-4 rounded-xl bg-[#F9FAFB] border border-[#E5E7EB]">
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-[#6B7280] block mb-2">
-                  Session Chapters & Timestamps:
-                </span>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[#6B7280]">
+                    Session Chapters & Timestamps (Click to Jump):
+                  </span>
+                  <span className="text-[10px] text-blue-700 bg-blue-50 px-2 py-0.5 rounded font-mono font-bold">
+                    {activeSession.chapters.length} Chapters
+                  </span>
+                </div>
                 <div className="space-y-1.5">
                   {activeSession.chapters.map((chap, cIdx) => (
-                    <div key={cIdx} className="flex items-center justify-between text-xs text-[#4B5563] py-1 border-b border-[#E5E7EB] last:border-0">
-                      <span>{chap.label}</span>
-                      <span className="font-mono text-blue-700 text-[11px]">{chap.time}</span>
-                    </div>
+                    <button
+                      key={cIdx}
+                      onClick={() => handleJumpToChapter(chap.seconds)}
+                      className="w-full flex items-center justify-between text-xs text-[#4B5563] hover:text-[#111827] py-2 px-2.5 rounded-lg hover:bg-white border border-transparent hover:border-[#E5E7EB] transition-all text-left group"
+                    >
+                      <div className="flex items-center gap-2">
+                        <Play className="w-3 h-3 text-blue-600 opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all shrink-0 fill-blue-600" />
+                        <span className="group-hover:font-semibold transition-all">{chap.label}</span>
+                      </div>
+                      <span className="font-mono text-blue-700 bg-blue-50/80 px-2 py-0.5 rounded text-[11px] font-semibold group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        {chap.time}
+                      </span>
+                    </button>
                   ))}
                 </div>
               </div>
